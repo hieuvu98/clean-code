@@ -9,4 +9,21 @@ function getWeekNum() {
   console.log("Week number of " + currentDate + " is :   " + weekNumber);
 }
 
+function startOfMonth(date) {
+  return new Date(date.getFullYear(), date.getMonth(), 1);
+}
 
+function buildRedisUserKey(key, username) {
+  return key + "." + Math.abs(hashCode(username) % 256);
+}
+
+function hashCode(str) {
+  return str
+      .split("")
+      .reduce(
+          (prevHash, currVal) =>
+              ((prevHash << 5) - prevHash + currVal.charCodeAt(0)) | 0,
+          0
+      );
+}
+console.log(buildRedisUserKey('redis.key.educa.primary.userinfo', "0975358986"));
