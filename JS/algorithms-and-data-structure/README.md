@@ -68,3 +68,6 @@ function outer(input) {
 - Độ phức tạp O(n).
 - Array methods: indexOf, includes, find, findIndex,...
 
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/8ce0e58ed3dafbed1101669bf3caa64326bef0b9/images/linear-search-algorithm.gif?token=GHSAT0AAAAAAB6JS3AGLP4WPRGRAWUOXEJMY7EZO2Q)
+
+### Binary Search - Tìm kiếm nhị phân
