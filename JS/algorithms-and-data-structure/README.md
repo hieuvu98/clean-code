@@ -1,19 +1,21 @@
 ## Advanced working with functions
-### Call Stack And Recursion
-1. Call Stack
-2. Recursive Function
-For something simple to start with – let’s write a function pow(x, n) that raises x to a natural power of n. In other words, multiplies x by itself n times.
+
+### Call Stack Và Đệ Quy
+#### Call Stack
+#### Tail call optimization
+#### Đệ Quy
+
+Ta có một hàm pow(x, n) tăng x lên với n. Nói cách khác, nhân x lên với n lần.
 
 ```html
-pow(2, 2) = 4
-pow(2, 3) = 8
-pow(2, 4) = 16
+pow(2, 2) = 4 pow(2, 3) = 8 pow(2, 4) = 16
 ```
-- Iterative thinking: the for loop:
+
+- Suy nghĩ lặp lại: vòng lặp for:
+
 ```js
 function pow(x, n) {
   let result = 1;
-
   // multiply result by x n times in the loop
   for (let i = 0; i < n; i++) {
     result *= x;
@@ -22,10 +24,11 @@ function pow(x, n) {
   return result;
 }
 
-alert( pow(2, 3) ); // 8
+alert(pow(2, 3)); // 8
 ```
 
-- Recursive thinking: simplify the task and call self:
+- Tư duy đệ quy: đơn giản hóa nhiệm vụ và tự gọi:
+
 ```js
 function pow(x, n) {
   if (n == 1) {
@@ -35,13 +38,33 @@ function pow(x, n) {
   }
 }
 
-alert( pow(2, 3) ); // 8
+alert(pow(2, 3)); // 8
 ```
-- When pow(x, n) is called, the execution splits into two branches:
+
+- Khi pow(x, n)được gọi, thực thi chia thành hai nhánh:
+
 ```html
-              if n==1  = x
-             /
-pow(x, n) =
-             \
-              else     = x * pow(x, n - 1)
+if n==1 = x / pow(x, n) = \ else = x * pow(x, n - 1)
 ```
+
+- HELPER METHOD RECURSION:
+
+```js
+function outer(input) {
+  let outerScopedVariable = [];
+  function helper(helperInput) {
+    // modify the outerScopedVariable
+    helper(helperInput--);
+  }
+  helper(input);
+  return outerScopedVariable;
+}
+```
+
+## Searching Algorithms
+### Linear Search - Tìm kiếm tuyến tính (Tìm kiếm tuần tự)
+- là một phương pháp tìm kiếm một giá trị có trong danh sách. Nó tuần tự kiểm tra từng phần tử trong danh sách cho đến khi nó tìm ra một hay nhiều giá trị mục tiêu.
+- Là một giải thuật đơn giản khi hiện thực và khá hiệu quả với danh sách đủ nhỏ hoặc một danh sách chưa được sắp xếp.
+- Độ phức tạp O(n).
+- Array methods: indexOf, includes, find, findIndex,...
+
