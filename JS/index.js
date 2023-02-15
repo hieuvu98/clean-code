@@ -31,6 +31,15 @@ function hashCode(str) {
       0
     );
 }
+let username = 'bao 762014';
 console.log(
-  buildRedisUserKey("redis.key.educa.primary.userinfo", "0975358986")
+  buildRedisUserKey("redis.key.educa.primary.userinfo", username)
+);
+
+console.log(
+  buildRedisUserKey("com.educa.code.package.info", username)
+);
+
+console.log(
+  buildRedisUserKey("redis.key.educa.users", username)
 );

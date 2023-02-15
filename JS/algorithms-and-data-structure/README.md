@@ -1,10 +1,12 @@
 ## Advanced working with functions
 
-### Call Stack Và Đệ Quy
-#### Call Stack
+### Stack Và Đệ Quy
+#### Stack
+- Stack là một cấu trúc dữ liệu trừu tượng. Nó là một danh sách được sắp xếp trong đó các phần tử được thêm vào hoặc xóa đi chỉ ở một đầu của danh sách, được gọi là đỉnh của ngăn xếp (TOS). Vì tất cả việc xóa và chèn trong ngăn xếp được thực hiện từ đầu ngăn xếp, phần tử cuối cùng được thêm vào sẽ là phần tử đầu tiên được xóa khỏi ngăn xếp
+- Hoạt động theo cơ chế LIFO
 #### Tail call optimization
 #### Đệ Quy
-
+##### Đệ quy tuyến tính (Linear Recursion)
 Ta có một hàm pow(x, n) tăng x lên với n. Nói cách khác, nhân x lên với n lần.
 
 ```html
@@ -60,7 +62,21 @@ function outer(input) {
   return outerScopedVariable;
 }
 ```
-
+##### Đệ quy đuôi (Tail Recursion)
+- Đệ quy đuôi là một trường hợp đặc biệt của đệ quy tuyến tính
+- Hàm thực hiện gọi đệ quy ở sau cùng.
+```c++
+  int gcd(int m, int n) {
+    int r;
+    if( m < n) return gcd(n, m);
+    r = m % n;
+    if(r == 0) return (n);
+    return gcd(n, r);
+  }
+```
+##### Đệ quy nhị phân (Binary Recursion)
+- Là dạng đệ quy gọi hai lần chính nó. Hiểu đơn giản là trong một hàm đệ quy, mà có dòng lệnh gọi chính hàm đó hai lần.
+##### Đệ quy đa tuyến (Exponential Recursion)
 ## Searching Algorithms
 ### Linear Search - Tìm kiếm tuyến tính (Tìm kiếm tuần tự)
 - là một phương pháp tìm kiếm một giá trị có trong danh sách. Nó tuần tự kiểm tra từng phần tử trong danh sách cho đến khi nó tìm ra một hay nhiều giá trị mục tiêu.
