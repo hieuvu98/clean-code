@@ -47,7 +47,7 @@ function fibonacci(n) {
 - Đệ quy lồng là loại đệ quy gọi đối số của nó là một đệ quy. Hiểu đơn giản là tham số truyền vào của hàm đệ quy là một đệ quy.
 ##### Đệ tương hỗ (Mutual Recursion)
 - Đệ quy tương hỗ là loại đệ quy không gọi đệ quy trực tiếp chính nó, mà gọi một hàm khác. Trong hàm khác lại gọi lại nó. Ví dụ chúng ta có hàm A() gọi đệ quy hàm B() và trong hàm B() gọi lại đệ quy hàm A().
-## Searching Algorithms
+## Thuật toán tìm kiếm
 ### Linear Search - Tìm kiếm tuyến tính (Tìm kiếm tuần tự)
 - là một phương pháp tìm kiếm một giá trị có trong danh sách. Nó tuần tự kiểm tra từng phần tử trong danh sách cho đến khi nó tìm ra một hay nhiều giá trị mục tiêu.
 - Là một giải thuật đơn giản khi hiện thực và khá hiệu quả với danh sách đủ nhỏ hoặc một danh sách chưa được sắp xếp.
@@ -60,3 +60,32 @@ function fibonacci(n) {
 - là một giải thuật tìm kiếm nhanh với độ phức tạp thời gian chạy là Ο(log n). Giải thuật tìm kiếm nhị phân làm việc dựa trên nguyên tắc chia để trị (Divide and Conquer).
 - Thụât toán tìm kiếm nhị phân thực hiện tìm kiếm một mảng đã sắp xếp bằng cách liên tục chia các khoảng tìm kiếm thành 1 nửa. Bắt đầu với một khoảng từ phần tử đầu mảng, tới cuối mảng. Nếu giá trị của phần tử cần tìm nhỏ hơn giá trị của phần từ nằm ở giữa khoảng thì thu hẹp phạm vi tìm kiếm từ đầu mảng tới giửa mảng và nguợc lại. Cứ thế tiếp tục chia phạm vi thành các nửa cho dến khi tìm thấy hoặc đã duyệt hết.
 - Thuật toán tìm kiếm nhị phân tỏ ra tối ưu hơn so với tìm kiếm tuyết tính ở các mảng có độ dài lớn và đã được sắp xếp. Ngược lại, tìm kiếm tuyến tính sẽ tỏ ra hiệu quả hơn khi triển khai trên các mảng nhỏ và chưa được sắp xếp.
+- Tìm kiếm nhị phân trong mảng:
+
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/binary-and-linear-search-animations.gif)
+
+- Tìm kiếm trong cây nhị phân:
+
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/binary-search-tree-sorted-array-animation.gif)
+
+- Chèn phần tử vào cây nhị phân:
+
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/binary-search-tree-insertion-animation.gif)
+
+
+## Thuật toán sắp xếp
+### Sắp xếp nổi bọt - Bubble Sort
+### Sắp xếp chọn - Selection Sort
+### Sắp xếp chèn - Insertion Sort
+### Sắp xếp trộn - Merge Sort
+### Sắp xếp nhanh - Quick Sort
+### Radix Sort
+
+## Danh sách liên kết đơn
+## Danh sách liên kết đôi
+## Ngăn xếp - Stack
+## Hàng đợi - Queue
+## Cây nhị phân - Binary Tree
+## Heap
+## Hash Table
+## Graph
