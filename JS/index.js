@@ -31,9 +31,9 @@ function hashCode(str) {
       0
     );
 }
-let username = 'bao 762014';
+let username = 'huyhqq';
 console.log(
-  buildRedisUserKey("redis.key.educa.primary.userinfo", username)
+  buildRedisUserKey("redis.key.educa.game_tttt.registered_week:1:202312", username)
 );
 
 console.log(
