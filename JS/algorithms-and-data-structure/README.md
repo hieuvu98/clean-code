@@ -80,6 +80,8 @@ function fibonacci(n) {
   - Trường hợp tốt: O(n)
   - Trung bình: O(n^2)
   - Trường hợp xấu: O(n^2)
+
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/bubble-sort-visualization.gif)
 ### Sắp xếp chọn - Selection Sort
 ### Sắp xếp chèn - Insertion Sort
 ### Sắp xếp trộn - Merge Sort
