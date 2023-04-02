@@ -54,7 +54,7 @@ function fibonacci(n) {
 - Độ phức tạp O(n).
 - Array methods: indexOf, includes, find, findIndex,...
 
-![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/8ce0e58ed3dafbed1101669bf3caa64326bef0b9/images/linear-search-algorithm.gif?token=GHSAT0AAAAAAB6JS3AGLP4WPRGRAWUOXEJMY7EZO2Q)
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/8ce0e58ed3dafbed1101669bf3caa64326bef0b9/images/linear-search-algorithm.gif)
 
 ### Binary Search - Tìm kiếm nhị phân
 - là một giải thuật tìm kiếm nhanh với độ phức tạp thời gian chạy là Ο(log n). Giải thuật tìm kiếm nhị phân làm việc dựa trên nguyên tắc chia để trị (Divide and Conquer).
@@ -75,7 +75,8 @@ function fibonacci(n) {
 
 ## Thuật toán sắp xếp
 ### Sắp xếp nổi bọt - Bubble Sort
-- Thuật toán sắp xếp bubble sort thứcj hiện sắp xếp dãy số bằng cách lặp lại công việc đổi chỗ 2 số liên tiếp nhau nếu chúng đứng sai thứ tự(số sau bé hơn số trước với trường hợp sắp xếp tăng dần) cho đến khi dãy số được sắp xếp.
+- Thuật toán sắp xếp bubble sort thực hiện sắp xếp dãy số bằng cách lặp lại công việc đổi chỗ 2 số liên tiếp nhau nếu chúng đứng sai thứ tự(số sau bé hơn số trước với trường hợp sắp xếp tăng dần) cho đến khi dãy số được sắp xếp.
+- Giải thuật sắp xếp nổi bọt là giải thuật chậm nhất trong số các giải thuật sắp xếp cơ bản. Giải thuật này còn chậm hơn giải thuật đổi chỗ trực tiếp mặc dù số lần so sánh bằng nhau, nhưng do đổi chỗ hai phần tử kề nhau nên số lần đổi chỗ nhiều hơn.
 - Độ phức tạp thuật toán:
   - Trường hợp tốt: O(n)
   - Trung bình: O(n^2)
@@ -83,6 +84,14 @@ function fibonacci(n) {
 
 ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/bubble-sort-visualization.gif)
 ### Sắp xếp chọn - Selection Sort
+- Thuật toán sắp xếp bubble sort thực hiện sắp xếp dãy số bằng cách lặp lại công việc đổi chỗ 2 số liên tiếp nhau nếu chúng đứng sai thứ tự(số sau bé hơn số trước với trường hợp sắp xếp tăng dần) cho đến khi dãy số được sắp xếp.
+- Giải thuật sắp xếp nổi bọt là giải thuật chậm nhất trong số các giải thuật sắp xếp cơ bản. Giải thuật này còn chậm hơn giải thuật đổi chỗ trực tiếp mặc dù số lần so sánh bằng nhau, nhưng do đổi chỗ hai phần tử kề nhau nên số lần đổi chỗ nhiều hơn.
+- Độ phức tạp thuật toán:
+  - Trường hợp tốt: O(n)
+  - Trung bình: O(n^2)
+  - Trường hợp xấu: O(n^2)
+
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/selection-soft-gif.gif)
 ### Sắp xếp chèn - Insertion Sort
 ### Sắp xếp trộn - Merge Sort
 ### Sắp xếp nhanh - Quick Sort
