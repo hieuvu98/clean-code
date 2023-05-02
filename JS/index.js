@@ -31,9 +31,12 @@ function hashCode(str) {
       0
     );
 }
-let username = 'huyhqq';
+function hash() {
+  return Math.floor(Math.random() * 5);
+}
+let username = 'duongphucvinh';
 console.log(
-  buildRedisUserKey("redis.key.educa.game_tttt.registered_week:1:202312", username)
+  hash(username)
 );
 
 console.log(

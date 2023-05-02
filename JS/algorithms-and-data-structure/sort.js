@@ -18,4 +18,19 @@ function bubbleSort(arr) {
   return arr;
 }
 
-bubbleSort([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+function selectionSort(arr) {
+  let indexMin;
+  for (let i = 0; i < arr.length - 1; i++) {
+    indexMin = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[indexMin] > arr[j]) {
+        indexMin = j;
+      }
+    }
+    if (i !== indexMin) {
+      swap(arr, i, indexMin);
+    }
+  }
+}
+
+bubbleSort([6, 7, 8, 9, 1, 2, 3, 4, 5]);
