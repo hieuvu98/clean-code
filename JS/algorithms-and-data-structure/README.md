@@ -1,8 +1,11 @@
 ## Stack và Heap
+
 > run time: là thời điểm chương trình đang chạy
 
 > compile time: là thời điểm source code đang được compile
+
 ## Advanced working with functions
+
 ### Stack Và Đệ Quy
 
 #### Stack
@@ -146,7 +149,7 @@ function fibonacci(n) {
 | So sánh             | Array                                                                   | Linked List                                                                                       |
 | ------------------- | :---------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
 | Kích thước          | Kích thước cố định <br> Khai báo kích thước trước khi sử dụng           | Kích thước thay đổi trong quá trình thêm/ xóa phần tử <br> Kích thước tối đa phụ thuộc vào bộ nhớ |
-| Lưu trữ          |            | Kích thước thay đổi trong quá trình thêm/ xóa phần tử <br> Kích thước tối đa phụ thuộc vào bộ nhớ |
+| Lưu trữ             |                                                                         | Kích thước thay đổi trong quá trình thêm/ xóa phần tử <br> Kích thước tối đa phụ thuộc vào bộ nhớ |
 | Cấp phát bộ nhớ     | Tĩnh: Bộ nhớ được cấp phát trong quá trình biên dịch                    | Động: Bộ nhớ được cấp phát trong quá trình chạy                                                   |
 | Bộ nhớ              | Cần ít                                                                  | Cần nhiều                                                                                         |
 | Sử dụng bộ nhớ      | Không hiệu quả                                                          | Hiệu quả                                                                                          |
@@ -168,5 +171,3 @@ function fibonacci(n) {
 ## Hash Table
 
 ## Graph
-
-
