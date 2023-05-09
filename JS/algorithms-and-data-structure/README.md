@@ -164,8 +164,38 @@ function fibonacci(n) {
 
 ## Hàng đợi - Queue
 
-## Cây nhị phân - Binary Tree
+## Cấu trúc cây - Cây nhị phân - Binary Tree
 
+- Cây (tree) là một cấu trúc dữ liệu gồm một tập hữu hạn các nút, giữa các nút có một quan hệ phân cấp, gọi là quan hệ “cha – con”. Trong cây, có một nút đặc biệt, không có nút cha, gọi là gốc nút (root) của cây.
+- Nếu cây mà không có nút nào thì ta gọi là cây rỗng (null tree).
+- Array, linked list, stack và queue đều là cấu trúc dữ liệu tuyến tính, lưu trữ dữ liệu tuần tự. Thời gian xử lý trên các cấu trúc dữ liệu này sẽ tăng lên nhiều khi kích thước dữ liệu tăng lên. Còn các cấu trúc dữ liệu dạng cây khác nhau cho phép truy cập dữ liệu nhanh hơn và dễ dàng hơn vì nó là cấu trúc dữ liệu phi tuyến tính.
+
+### Một số khái niệm về cây:
+
+- Bậc của một nút: là số cây con của nút đó.
+- Bậc của một cây: là bậc lớn nhất của các nút trong cây (số cây con tối đa của một nút thuộc cây).
+- Nút gốc: là nút không có nút cha.
+- Nút lá: là nút không có nút con (có bậc bằng 0).
+- Nút nhánh (nút trong): là nút không phải nút gốc cũng không phải nút lá.
+- Mức của một nút:
+  - Quy định mức (nút gốc(T0)) = 0. T1, T2,…, Tn là các cây con của T0.
+  - Mức(T1) = Mức(T2) = … = Mức(Tn) = Mức(T0) + 1.
+- Chiều cao của cây: h = mức lớn nhất của một nút trong cây + 1.
+- Độ dài đường đi từ gốc đến nút x: là số nhánh cần đi qua kể từ nút gốc đến x.
+- Có nhiều cấu trúc dữ liệu dạng cây như cây nhị phân tìm kiếm (Binary Search Tree), AVL Tree, B Tree,…
+
+### Một số khái niệm về cây nhị phân
+- Cây nhị là cây mà mỗi nút của nó đều có bậc 2.
+- Cây nhị phân đầy đủ là cây có mức của các nút lá đều bằng nhau.
+- Cây nhị phân tìm kiếm là cây nhị phân có các node bên trái nhỏ hơn node gốc, các node bên phải lớp hơn node gốc
+- Số nút nằm ở mức I nhỏ hơn hoặc bằng 2^I
+- Số nút lá <= 2^h - 1, với h là chiều cao của cây
+- Chiều cao của cây h >= log2(số nút trong cây)
+- Số nút trong cây <= 2^h - 1
+- Có 3 kiểu duyệt chính áp dụng trên cây nhị phân: 
+  * Duyệt theo thứ tự trước (NLR - Preorder): Node -> Left -> Right Trước tiên thăm nút gốc sau đó thăm các nút của cây còn trái rồi đến cây con phải
+  * Duyệt theo thứ tự giữa (LNR - Inorder): Left -> Node -> Right Trước tiên thăm các nít của cây con trái sau đó thăm nút gốc rồi đến cây con phải
+  * Duyệt theo thứ tự sau (LRN - Postorder): Left -> Right -> Node Trước tiên thăm các nút của cây con trái sau đó đến cây con phải rồi cuối cùng mới thăm nút gốc
 ## Heap
 
 ## Hash Table

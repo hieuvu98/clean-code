@@ -34,13 +34,29 @@ function hashCode(str) {
 function hash() {
   return Math.floor(Math.random() * 5);
 }
-let username = 'duongphucvinh';
+
+function getDateStringLearningReport(finishedTime) {
+  let date = new Date(finishedTime);
+  let year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  if (month < 10) {
+    month = "0" + month;
+  }
+  let day = date.getDate();
+  if (day < 10) {
+    day = "0" + day;
+  }
+  return year + "" + month + "" + day;
+}
+
+let username = 'nhuanh1601';
+console.log(getDateStringLearningReport(1681998085116));
 console.log(
   hash(username)
 );
 
 console.log(
-  buildRedisUserKey("com.educa.code.package.info", username)
+  buildRedisUserKey("redis.key.educa.es.userinfo.v2", username)
 );
 
 console.log(
