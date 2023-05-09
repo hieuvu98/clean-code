@@ -184,6 +184,8 @@ function fibonacci(n) {
 - Độ dài đường đi từ gốc đến nút x: là số nhánh cần đi qua kể từ nút gốc đến x.
 - Có nhiều cấu trúc dữ liệu dạng cây như cây nhị phân tìm kiếm (Binary Search Tree), AVL Tree, B Tree,…
 
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/Treedatastructure.png)
+
 ### Một số khái niệm về cây nhị phân
 - Cây nhị là cây mà mỗi nút của nó đều có bậc 2.
 - Cây nhị phân đầy đủ là cây có mức của các nút lá đều bằng nhau.
@@ -193,9 +195,18 @@ function fibonacci(n) {
 - Chiều cao của cây h >= log2(số nút trong cây)
 - Số nút trong cây <= 2^h - 1
 - Có 3 kiểu duyệt chính áp dụng trên cây nhị phân: 
-  * Duyệt theo thứ tự trước (NLR - Preorder): Node -> Left -> Right Trước tiên thăm nút gốc sau đó thăm các nút của cây còn trái rồi đến cây con phải
-  * Duyệt theo thứ tự giữa (LNR - Inorder): Left -> Node -> Right Trước tiên thăm các nít của cây con trái sau đó thăm nút gốc rồi đến cây con phải
-  * Duyệt theo thứ tự sau (LRN - Postorder): Left -> Right -> Node Trước tiên thăm các nút của cây con trái sau đó đến cây con phải rồi cuối cùng mới thăm nút gốc
+* Duyệt theo thứ tự trước (NLR - Preorder): Trước tiên thăm nút gốc sau đó thăm các nút của cây còn trái rồi đến cây con phải
+
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/b-tree-nlr.gif)
+
+* Duyệt theo thứ tự giữa (LNR - Inorder): Trước tiên thăm các nít của cây con trái sau đó thăm nút gốc rồi đến cây con phải
+
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/b-tree-lnr.gif)
+
+* Duyệt theo thứ tự sau (LRN - Postorder): Trước tiên thăm các nút của cây con trái sau đó đến cây con phải rồi cuối cùng mới thăm nút gốc
+
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/b-tree-postorder.gif)
+
 ## Heap
 
 ## Hash Table
