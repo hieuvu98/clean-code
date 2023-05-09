@@ -187,6 +187,7 @@ function fibonacci(n) {
 ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/Treedatastructure.png)
 
 ### Một số khái niệm về cây nhị phân
+
 - Cây nhị là cây mà mỗi nút của nó đều có bậc 2.
 - Cây nhị phân đầy đủ là cây có mức của các nút lá đều bằng nhau.
 - Cây nhị phân tìm kiếm là cây nhị phân có các node bên trái nhỏ hơn node gốc, các node bên phải lớp hơn node gốc
@@ -194,16 +195,30 @@ function fibonacci(n) {
 - Số nút lá <= 2^h - 1, với h là chiều cao của cây
 - Chiều cao của cây h >= log2(số nút trong cây)
 - Số nút trong cây <= 2^h - 1
-- Có 3 kiểu duyệt chính áp dụng trên cây nhị phân: 
+
+### Duyệt cây nhị phân
+
+#### Breadth-First Search
+
+- là một thuật toán duyệt bắt đầu từ gốc, sau đó lần lượt xét qua các node của một cây theo ưu tiên về độ sâu từ nhỏ đến lớn.
+- sử dụng một danh sách để chứa những đỉnh đang “chờ” thăm. Tại mỗi bước, ta thăm một đỉnh đầu danh sách, loại nó ra khỏi danh sách và cho những đỉnh kề với nó chưa được thăm xếp hàng vào cuối danh sách. Thuật toán sẽ kết thúc khi danh sách rỗng.
+
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/breadth-first-tree-traversal.gif)
+
+#### Depth First Search
+
+- là giải thuật duyệt hoặc tìm kiếm trên một cây và sử dụng stack (ngăn xếp) để ghi nhớ đỉnh liền kề để bắt đầu việc tìm kiếm khi không gặp được đỉnh liền kề trong bất kỳ vòng lặp nào. Giải thuật tiếp tục cho tới khi gặp được đỉnh cần tìm hoặc tới một nút không có con. Khi đó giải thuật quay lui về đỉnh vừa mới tìm kiếm ở bước trước.
+- Có 3 kiểu duyệt chính:
+
 * Duyệt theo thứ tự trước (NLR - Preorder): Trước tiên thăm nút gốc sau đó thăm các nút của cây còn trái rồi đến cây con phải
 
 ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/b-tree-nlr.gif)
 
-* Duyệt theo thứ tự giữa (LNR - Inorder): Trước tiên thăm các nít của cây con trái sau đó thăm nút gốc rồi đến cây con phải
+- Duyệt theo thứ tự giữa (LNR - Inorder): Trước tiên thăm các nít của cây con trái sau đó thăm nút gốc rồi đến cây con phải
 
 ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/b-tree-lnr.gif)
 
-* Duyệt theo thứ tự sau (LRN - Postorder): Trước tiên thăm các nút của cây con trái sau đó đến cây con phải rồi cuối cùng mới thăm nút gốc
+- Duyệt theo thứ tự sau (LRN - Postorder): Trước tiên thăm các nút của cây con trái sau đó đến cây con phải rồi cuối cùng mới thăm nút gốc
 
 ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/b-tree-postorder.gif)
 
