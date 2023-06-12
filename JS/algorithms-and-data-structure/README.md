@@ -196,8 +196,14 @@ function fibonacci(n) {
 - Chiều cao của cây h >= log2(số nút trong cây)
 - Số nút trong cây <= 2^h - 1
 
+#### Cây nhị phân hoàn hảo (Perfect Binary Tree)
+- là cây mà tất cả nodes đều có 2 con và các nút lá ở cùng một level.
+#### Cây nhị phân đầy đủ (Full Binary Tree)
+- là cây trong đó mọi nút cha đều có hai hoặc không có nút con nào.
+#### Cây nhị phân hoàn chỉnh (Complete Binary Tree)
+-  là cây trong đó tất cả các level
+#### Cây nhị phân suy biến
 ### Duyệt cây nhị phân
-
 #### Breadth-First Search
 
 - là một thuật toán duyệt bắt đầu từ gốc, sau đó lần lượt xét qua các node của một cây theo ưu tiên về độ sâu từ nhỏ đến lớn.
@@ -223,6 +229,9 @@ function fibonacci(n) {
 ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/b-tree-postorder.gif)
 
 ## Heap
+- Heap là một cấu trúc dữ liệu đặc biệt của cây nhị phân hoàn chỉnh, trong đó các nút trên cây được sắp xếp theo một thứ tự ràng buộc nhất định giữa node cha và node con. Nút ở gốc của Heap luôn là nút có mức ưu tiên cao nhất (nhỏ nhất hoặc lớn nhất)
+- Mỗi nút trên cây đều chứa một nhãn lớn hơn hoặc bằng các con của nó(nếu có) và nhỏ hơn hoặc bằng nút cha (trừ nút gốc và nó là nút lớn nhất).
+- Nút k trên cây sẽ có hai nút con là con bên trái 2*k+1 và con bên phải 2*k+2.
 
 ## Hash Table
 
