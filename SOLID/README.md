@@ -18,7 +18,8 @@
     - Giảm tính phụ thuộc giữa các thành phần
     - Dễ dàng mở rộng, bảo trì
     - Có thể phát triển đồng thời các lớp độc lập với nhau
-![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/8ce0e58ed3dafbed1101669bf3caa64326bef0b9/images/osi-model.png)
+    
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/osi-model.png)
 ### O - Open/closed principle
 
 - Nội dung: Có thể thoải mái mở rộng 1 class, nhưng không được sửa đổi bên trong class đó (open for extension but closed for modification)
