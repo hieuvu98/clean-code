@@ -1,7 +1,9 @@
 # Những nguyên tắc lập trình
 
 ## KISS
-
+## Separation of Concerns (SoC)
+## Principle of Least Astonishment (POLA)
+## Law of Demeter (LoD)
 ## DRY
 
 ## YAGNI
