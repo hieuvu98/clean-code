@@ -38,3 +38,9 @@
 - Giảm thiểu các lỗi và những vấn đề liên quan đến việc bảo trì ứng dụng do khả năng tái sử dụng các đối tượng.
 - Tăng tốc tiến trình thiết kế và phát triển, tiết kiệm được tài nguyên cho các lập trình viên. Giúp tối ưu và tái sử dụng code một cách hiệu quả.
 - Sự xuất hiện của 2 khái niệm mới là lớp và đối tượng chính là đặc trưng của phương pháp lập trình hướng đối tượng. Nó đã giải quyết được các khuyết điểm của phương pháp lập trình hướng cấu trúc để lại. Ngoài ra, các khái niệm này đã giúp biểu diễn tốt hơn thế giới thực trên máy tính.
+
+### Nhược điểm của lập trình hướng đối tượng
+
+- Khá phức tạp, đòi hỏi khá nhiều tư duy. Phương pháp này phức tạp vì phần mềm phải dựa trên sự tương tác của đối tượng. Do đó, lập trình viên cần phải hiểu bản chất của những khái niệm cơ bản như: lớp, đối tượng, phương thức, thuộc tính. Đồng thời, ta cũng cần nắm được bốn tính chất cơ bản của lập trình hướng đối tượng. Đó là: Tính trừu tượng (Abstraction), Tính đóng gói (Encapsulation), Tính kế thừa (Inheritance) và Tính đa hình (Polymorphism).
+- Chương trình chậm và có kích thước lớn hơn
+- Thực tế, có những vấn đề mặc định sẽ được giải quyết tốt hơn nếu lập trình viên sử dụng phương pháp lập trình chức năng (Functional Programming), lập trình logic, hoặc lập trình thủ tục. Nếu ta áp dụng lập trình hướng đối tượng, có thể sẽ không đem lại hiệu quả tốt.
