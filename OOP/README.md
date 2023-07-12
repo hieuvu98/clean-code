@@ -6,7 +6,7 @@
 
 - Đối với một ngôn ngữ lập trình hỗ trợ OOP thì việc triển khai kỹ thuật lập trình hướng đối tượng sẽ dễ dàng hơn. Kỹ thuật lập trình hướng đối tượng cải tiến việc phát triển các hệ thống phần mềm. Kỹ thuật ấy đề cao nhân tố chức năng (fucntionality) và các mối quan hệ dữ liệu.
 
-![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/oop-la-gi-fi.jpg)
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/oop-la-gi.jpg)
 
 - Trong mô hình OOP, mỗi object là một thực thể riêng biệt gồm những attribute (thuộc tính) và method (phương thức). Class thì giống như cái khuôn để “đúc” ra object và cũng có hai thành phần là attribute và method. Attribute chính là các thông tin của object còn method là những hành động mà object có thể thực hiện.
 
