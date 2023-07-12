@@ -12,10 +12,14 @@
 
 ## Các đặc điểm cơ bản của lập trình hướng đối tượng
 
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/procedural-programming-vs-object-oriented-programming.png)
+
 ### Tính trừu tượng(Abstraction)
 
 - Là một cơ chế cho phép biểu diễn một tình huống phức tạp trong thế giới thực bằng một mô hình được đơn giản hóa. Nó bao gồm việc tập trung vào các tính chất quan trọng của một đối tượng khi phải làm việc với lượng lớn thông tin. Quá trình trừu tượng hóa dữ liệu giúp ta xác định được những thuộc tính, hành động nào của đối tượng cần thiết sử dụng cho chương trình.
 - Trừu tượng hóa là một trong những công cụ cơ bản của tất cả các phương pháp lập trình, không chỉ lập trình hướng đối tượng. Khi viết một chương trình giải một bài toán của thế giới thực, trừu tượng hóa là một cách để mô hình hóa bài toán đó.
+
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/L9iXI.png)
 
 ### Tính đóng gói dữ liệu (Encapsulation)
 
