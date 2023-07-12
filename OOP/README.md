@@ -5,13 +5,16 @@
 - Lập trình hướng đối tượng (object-oriented programming) là một phương pháp thiết kế và phát triển phần mềm. OOP là phương thức tư duy mới để giải quyết vấn đề bằng máy tính. Để đạt kết quả, lập trình viên phải nắn vấn đề thành một thực thể quen thuộc với máy tính. Cách tiếp cận hướng đối tượng cung cấp một giải pháp toàn vẹn để giải quyết vấn.
 
 - Đối với một ngôn ngữ lập trình hỗ trợ OOP thì việc triển khai kỹ thuật lập trình hướng đối tượng sẽ dễ dàng hơn. Kỹ thuật lập trình hướng đối tượng cải tiến việc phát triển các hệ thống phần mềm. Kỹ thuật ấy đề cao nhân tố chức năng (fucntionality) và các mối quan hệ dữ liệu.
+
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/oop-la-gi-fi.jpg)
+
 - Trong mô hình OOP, mỗi object là một thực thể riêng biệt gồm những attribute (thuộc tính) và method (phương thức). Class thì giống như cái khuôn để “đúc” ra object và cũng có hai thành phần là attribute và method. Attribute chính là các thông tin của object còn method là những hành động mà object có thể thực hiện.
 
 ## Các đặc điểm cơ bản của lập trình hướng đối tượng
 
 ### Tính trừu tượng(Abstraction)
 
-- là một cơ chế cho phép biểu diễn một tình huống phức tạp trong thế giới thực bằng một mô hình được đơn giản hóa. Nó bao gồm việc tập trung vào các tính chất quan trọng của một đối tượng khi phải làm việc với lượng lớn thông tin. Quá trình trừu tượng hóa dữ liệu giúp ta xác định được những thuộc tính, hành động nào của đối tượng cần thiết sử dụng cho chương trình.
+- Là một cơ chế cho phép biểu diễn một tình huống phức tạp trong thế giới thực bằng một mô hình được đơn giản hóa. Nó bao gồm việc tập trung vào các tính chất quan trọng của một đối tượng khi phải làm việc với lượng lớn thông tin. Quá trình trừu tượng hóa dữ liệu giúp ta xác định được những thuộc tính, hành động nào của đối tượng cần thiết sử dụng cho chương trình.
 - Trừu tượng hóa là một trong những công cụ cơ bản của tất cả các phương pháp lập trình, không chỉ lập trình hướng đối tượng. Khi viết một chương trình giải một bài toán của thế giới thực, trừu tượng hóa là một cách để mô hình hóa bài toán đó.
 
 ### Tính đóng gói dữ liệu (Encapsulation)
