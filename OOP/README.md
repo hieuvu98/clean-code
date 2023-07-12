@@ -16,10 +16,30 @@
 
 ### Tính trừu tượng(Abstraction)
 
-- Là một cơ chế cho phép biểu diễn một tình huống phức tạp trong thế giới thực bằng một mô hình được đơn giản hóa. Nó bao gồm việc tập trung vào các tính chất quan trọng của một đối tượng khi phải làm việc với lượng lớn thông tin. Quá trình trừu tượng hóa dữ liệu giúp ta xác định được những thuộc tính, hành động nào của đối tượng cần thiết sử dụng cho chương trình.
-- Trừu tượng hóa là một trong những công cụ cơ bản của tất cả các phương pháp lập trình, không chỉ lập trình hướng đối tượng. Khi viết một chương trình giải một bài toán của thế giới thực, trừu tượng hóa là một cách để mô hình hóa bài toán đó.
+- Là một cơ chế cho phép biểu diễn một tình huống phức tạp trong thế giới thực bằng một mô hình được đơn giản hóa. Nó bao gồm việc tập trung vào các tính chất quan trọng của một đối tượng, ẩn việc triển khai thực tế của một ứng dụng khỏi người dùng. Thay vào đó, lập trình viên chỉ nhấn mạnh vào cách sử dụng ứng dụng.
+- Thông qua tính trừu tượng, lập trình viên có thể ẩn tất cả dữ liệu hoặc quy trình không liên quan của ứng dụng. Đối với người dùng, đó chỉ là những chi tiết không cần thiết. Từ đó, ta có thể để giảm độ phức tạp và tăng hiệu quả sử dụng của phần mềm.
 
-![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/L9iXI.png)
+  ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/L9iXI.png)
+
+- Khi một lập trình viên phải phát triển một chương trình ứng dụng thì không có nghĩa là người ấy lập tức viết mã cho ứng dụng ấy. Trước hết, người ấy phải nghiên cứu ứng dụng và xác định những thành phần tạo nên ứng dụng. Kế tiếp, người ấy phải xác định những thông tin cần thiết về mỗi thành phần.
+- Người dùng chỉ cần biết có thể thực hiện những gì (what), còn việc thực hiện ra sao thì không cần quan tâm (how).
+
+- Ý nghĩa :
+  - Giao diện người dùng đơn giản, cấp cao.
+  - Các đoạn mã phức tạp bị ẩn đi.
+  - Nâng cao vấn đề bảo mật, bảo vệ dự liệu không bị lộ.
+  - Việc bảo trì phần mềm dễ dàng hơn.
+  - Việc cập nhật hay thay đổi mã sẽ rất ít khi ảnh hưởng đến Tính trừu tượng.
+
+#### Các phương pháp trừu tượng hóa
+
+##### Trừu tượng hóa dữ liệu
+
+- Khi dữ liệu của đối tượng không hiển thị ra bên ngoài, thì đó gọi là trừu tượng hóa dữ liệu. Nếu cần, lập trình viên có thể cấp quyền truy cập vào dữ liệu của đối tượng bằng nhiều cách. Thông thường họ sử dụng một số phương thức, chẳng hạn như get, set.
+
+##### Trừu tượng hóa quy trình
+
+- Lập trình viên không cần phải cung cấp chi tiết về tất cả các chức năng khác nhau của một đối tượng. Khi họ ẩn việc triển khai nội bộ của các chức năng liên quan đến hoạt động của người dùng, đó gọi là Trừu tượng hóa quy trình.
 
 ### Tính đóng gói dữ liệu (Encapsulation)
 
