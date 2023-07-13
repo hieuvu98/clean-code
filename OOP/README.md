@@ -2,13 +2,13 @@
 
 ## Tổng quan
 
-- Lập trình hướng đối tượng (object-oriented programming) là một phương pháp thiết kế và phát triển phần mềm. OOP là phương thức tư duy mới để giải quyết vấn đề bằng máy tính. Để đạt kết quả, lập trình viên phải nắn vấn đề thành một thực thể quen thuộc với máy tính. Cách tiếp cận hướng đối tượng cung cấp một giải pháp toàn vẹn để giải quyết vấn.
+Lập trình hướng đối tượng (object-oriented programming) là một phương pháp thiết kế và phát triển phần mềm. OOP là phương thức tư duy mới để giải quyết vấn đề bằng máy tính. Để đạt kết quả, lập trình viên phải nắn vấn đề thành một thực thể quen thuộc với máy tính. Cách tiếp cận hướng đối tượng cung cấp một giải pháp toàn vẹn để giải quyết vấn.
 
-- Đối với một ngôn ngữ lập trình hỗ trợ OOP thì việc triển khai kỹ thuật lập trình hướng đối tượng sẽ dễ dàng hơn. Kỹ thuật lập trình hướng đối tượng cải tiến việc phát triển các hệ thống phần mềm. Kỹ thuật ấy đề cao nhân tố chức năng (fucntionality) và các mối quan hệ dữ liệu.
+Đối với một ngôn ngữ lập trình hỗ trợ OOP thì việc triển khai kỹ thuật lập trình hướng đối tượng sẽ dễ dàng hơn. Kỹ thuật lập trình hướng đối tượng cải tiến việc phát triển các hệ thống phần mềm. Kỹ thuật ấy đề cao nhân tố chức năng (fucntionality) và các mối quan hệ dữ liệu.
 
 ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/oop-la-gi.jpg)
 
-- Trong mô hình OOP, mỗi object là một thực thể riêng biệt gồm những attribute (thuộc tính) và method (phương thức). Class thì giống như cái khuôn để “đúc” ra object và cũng có hai thành phần là attribute và method. Attribute chính là các thông tin của object còn method là những hành động mà object có thể thực hiện.
+Trong mô hình OOP, mỗi object là một thực thể riêng biệt gồm những attribute (thuộc tính) và method (phương thức). Class thì giống như cái khuôn để “đúc” ra object và cũng có hai thành phần là attribute và method. Attribute chính là các thông tin của object còn method là những hành động mà object có thể thực hiện.
 
 ## Các đặc điểm cơ bản của lập trình hướng đối tượng
 
@@ -16,19 +16,28 @@
 
 ### Tính trừu tượng(Abstraction)
 
-- Là một cơ chế cho phép biểu diễn một tình huống phức tạp trong thế giới thực bằng một mô hình được đơn giản hóa. Nó bao gồm việc tập trung vào các tính chất quan trọng của một đối tượng, ẩn việc triển khai thực tế của một ứng dụng khỏi người dùng.
+Là một cơ chế cho phép biểu diễn một tình huống phức tạp trong thế giới thực bằng một mô hình được đơn giản hóa. Nó bao gồm việc tập trung vào các tính chất quan trọng của một đối tượng, ẩn việc triển khai thực tế của một ứng dụng khỏi người dùng.
 
-  ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/L9iXI.png)
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/L9iXI.png)
 
-- Khi một lập trình viên phải phát triển một chương trình ứng dụng thì không có nghĩa là người ấy lập tức viết mã cho ứng dụng ấy. Trước hết, người ấy phải nghiên cứu ứng dụng và xác định những thành phần tạo nên ứng dụng. Kế tiếp, người ấy phải xác định những thông tin cần thiết về mỗi thành phần.
+Khi một lập trình viên phải phát triển một chương trình ứng dụng thì không có nghĩa là người ấy lập tức viết mã cho ứng dụng ấy. Trước hết, người ấy phải nghiên cứu ứng dụng và xác định những thành phần tạo nên ứng dụng. Kế tiếp, người ấy phải xác định những thông tin cần thiết về mỗi thành phần.
+
 - Người dùng chỉ cần biết có thể thực hiện những gì (what), còn việc thực hiện ra sao thì không cần quan tâm (how).
 
-- Ý nghĩa :
-  - Giao diện người dùng đơn giản, cấp cao.
-  - Các đoạn mã phức tạp bị ẩn đi.
-  - Nâng cao vấn đề bảo mật, bảo vệ dự liệu không bị lộ.
-  - Việc bảo trì phần mềm dễ dàng hơn.
-  - Việc cập nhật hay thay đổi mã sẽ rất ít khi ảnh hưởng đến Tính trừu tượng.
+Ý nghĩa :
+
+- Giao diện người dùng đơn giản, cấp cao.
+- Các đoạn mã phức tạp bị ẩn đi.
+- Nâng cao vấn đề bảo mật, bảo vệ dự liệu không bị lộ.
+- Việc bảo trì phần mềm dễ dàng hơn.
+- Việc cập nhật hay thay đổi mã sẽ rất ít khi ảnh hưởng đến Tính trừu tượng.
+
+Ví dụ: Bài toán quản lý sinh viên chúng ta chỉ cần quản lý các thông tin như
+
+- Họ tên
+- Ngày sinh
+- Giới tính
+- Điểm thi
 
 #### Các phương pháp trừu tượng hóa
 
@@ -39,6 +48,10 @@
 ##### Trừu tượng hóa quy trình
 
 - Lập trình viên không cần phải cung cấp chi tiết về tất cả các chức năng khác nhau của một đối tượng. Khi họ ẩn việc triển khai nội bộ của các chức năng liên quan đến hoạt động của người dùng, đó gọi là Trừu tượng hóa quy trình.
+
+#### Abstract Class
+
+#### Interface
 
 ### Tính đóng gói dữ liệu (Encapsulation)
 
