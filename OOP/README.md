@@ -87,7 +87,7 @@ class Student {
     }
 }
 
-$student = new Student();
+$student = new Student(); // Khởi tạo đối tượng Student
 $student->setFirstName('Student 1'); // Set firstname:  Student 1
 $student->setGender('Male'); // Gender is set to Male
 echo $student->firstname; // ERROR: Fatal error: Uncaught Error: Cannot access private property
