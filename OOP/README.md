@@ -16,8 +16,7 @@
 
 ### Tính trừu tượng(Abstraction)
 
-- Là một cơ chế cho phép biểu diễn một tình huống phức tạp trong thế giới thực bằng một mô hình được đơn giản hóa. Nó bao gồm việc tập trung vào các tính chất quan trọng của một đối tượng, ẩn việc triển khai thực tế của một ứng dụng khỏi người dùng. Thay vào đó, lập trình viên chỉ nhấn mạnh vào cách sử dụng ứng dụng.
-- Thông qua tính trừu tượng, lập trình viên có thể ẩn tất cả dữ liệu hoặc quy trình không liên quan của ứng dụng. Đối với người dùng, đó chỉ là những chi tiết không cần thiết. Từ đó, ta có thể để giảm độ phức tạp và tăng hiệu quả sử dụng của phần mềm.
+- Là một cơ chế cho phép biểu diễn một tình huống phức tạp trong thế giới thực bằng một mô hình được đơn giản hóa. Nó bao gồm việc tập trung vào các tính chất quan trọng của một đối tượng, ẩn việc triển khai thực tế của một ứng dụng khỏi người dùng.
 
   ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/L9iXI.png)
 
