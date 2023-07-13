@@ -44,6 +44,15 @@
 
 - Tính đóng gói là tiến trình che giấu việc thực thi những chi tiết của một đối tượng đối với người sử dụng đối tượng ấy. Tính chất này không cho phép người dùng trực tiếp tác động đến dữ liệu bên trong đối tượng mà phải thông qua các phương thức mà đối tượng cung cấp. Tính chất này đảm bảo tính toàn vẹn của đối tượng.
 
+  ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/Encapsulation-illustration-with-capsule.png)
+
+- Tính đóng gói có một số ưu điểm như sau:
+  - Tính linh hoạt: Mã được đóng gói sẽ linh hoạt, dễ sửa đổi hơn là những đoạn mã độc lập.
+  - Khả năng tái sử dụng: Mã đã đóng gói có thể được tái sử dụng trong một ứng dụng hoặc nhiều ứng dụng. Từ một đối tượng, người dùng có thể chuyển sang dùng một đối tượng khác mà không phải đổi mã. Bởi vì cả hai đối tượng đều có giao diện như nhau.
+  - Khả năng bảo trì: Mã được đóng gói trong những phần riêng biệt, như là lớp, phương thức, giao diện,… Do đó, việc thay đổi, cập nhật một phần của ứng dụng không ảnh hưởng đến những phần còn lại. Điều này giúp giảm công sức và tiết kiệm thời gian cho các nhà phát triển.
+  - Khả năng kiểm thử: Đối với một lớp được đóng gói, Tester sẽ diễn viết những bài kiểm thử hơn. Các biến thành viên sẽ tập trung ở một nơi chứ không nằm rải rác. Do đó, kiểm thử viên cũng tiết kiệm được thời gian và công sức hơn.
+  - Che giấu dữ liệu: Khi sử dụng phương thức, người dùng chỉ cần biết nó tạo ra kết quả gì. Họ không cần quan tâm đến những chi tiết bên trong của đối tượng để sử dụng nó.
+
 ### Tính kế thừa (Inheritance)
 
 - Tính thừa kế cho phép một lớp chia sẻ các thuộc tính và các phương
