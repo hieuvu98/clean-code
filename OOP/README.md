@@ -43,8 +43,56 @@
 ### Tính đóng gói dữ liệu (Encapsulation)
 
 - Tính đóng gói là tiến trình che giấu việc thực thi những chi tiết của một đối tượng đối với người sử dụng đối tượng ấy. Tính chất này không cho phép người dùng trực tiếp tác động đến dữ liệu bên trong đối tượng mà phải thông qua các phương thức mà đối tượng cung cấp. Tính chất này đảm bảo tính toàn vẹn của đối tượng.
+- Tính đóng gói được cung cấp bởi một bộ các từ khóa được gọi là Access Modifier, chúng dùng để giới hạn hoặc quy định phạm vi truy cập của một phương thức trong lớp. Cụ thể:
 
-  ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/Encapsulation-illustration-with-capsule.png)
+  - Private (riêng tư): phương thức có khai báo private chỉ có thể được truy cập trong chính lớp được khai báo đó.
+  - Public (công cộng): phương thức có khai báo public có thể được truy cập ở bất cứ lớp nào khác.
+  - Protected (được bảo vệ): phương thức có khai báo protected chỉ có thể được truy cập thông qua Tính kế thừa.
+  - Default (Mặc định): là khi phương thức không được khái báo rõ ràng. Thông thường thì nếu không được khai báo, phương thức sẽ được hiểu là public theo mặc định.
+
+    ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/Encapsulation-illustration-with-capsule.png)
+
+- Ví dụ về tính đóng gói:
+
+```PHP
+
+<?php
+
+class Student {
+    private $firstname;
+    private $gender;
+
+    public function getFirstName() {
+        return $this->firstname;
+    }
+
+    public function setFirstName($firstname) {
+        $this->firstname = $firstname;
+        echo("Set firstname:  ".$firstname);
+        echo("<br>");
+    }
+
+    public function getGender() {
+        return $this->gender;
+    }
+
+    public function setGender($gender) {
+        if ('Male' !== $gender and 'Female' !== $gender) {
+            echo('Set gender as Male or Female for gender');
+        }
+
+        $this->gender = $gender;
+        echo("Gender is set to ".$gender);
+        echo("<br>");
+    }
+}
+
+$student = new Student();
+$student->setFirstName('Student 1'); // Set firstname:  Student 1
+$student->setGender('Male'); // Gender is set to Male
+echo $student->firstname; // ERROR: Fatal error: Uncaught Error: Cannot access private property
+?>
+```
 
 - Tính đóng gói có một số ưu điểm như sau:
   - Tính linh hoạt: Mã được đóng gói sẽ linh hoạt, dễ sửa đổi hơn là những đoạn mã độc lập.
@@ -55,8 +103,7 @@
 
 ### Tính kế thừa (Inheritance)
 
-- Tính thừa kế cho phép một lớp chia sẻ các thuộc tính và các phương
-  thức được định nghĩa trong một hoặc nhiều lớp khác.
+- Tính thừa kế cho phép một lớp chia sẻ các thuộc tính và các phương thức được định nghĩa trong một hoặc nhiều lớp khác.
 - Lớp thừa hưởng từ một lớp khác được gọi là subclass (lớp con)
 
 ### Tính đa hình (Polymorphism)
