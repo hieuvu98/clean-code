@@ -49,10 +49,6 @@ Ví dụ: Bài toán quản lý sinh viên chúng ta chỉ cần quản lý các
 
 - Lập trình viên không cần phải cung cấp chi tiết về tất cả các chức năng khác nhau của một đối tượng. Khi họ ẩn việc triển khai nội bộ của các chức năng liên quan đến hoạt động của người dùng, đó gọi là Trừu tượng hóa quy trình.
 
-#### Abstract Class
-
-#### Interface
-
 ### Tính đóng gói dữ liệu (Encapsulation)
 
 - Tính đóng gói là tiến trình che giấu việc thực thi những chi tiết của một đối tượng đối với người sử dụng đối tượng ấy. Tính chất này không cho phép người dùng trực tiếp tác động đến dữ liệu bên trong đối tượng mà phải thông qua các phương thức mà đối tượng cung cấp. Tính chất này đảm bảo tính toàn vẹn của đối tượng.
@@ -182,9 +178,102 @@ Dog Barking...
 
 ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/Multiple-1.jpg)
 
+```C++
+#include <iostream>
+using namespace std;
+
+class Shape {
+   public:
+      void setWidth(int w) {
+         width = w;
+      }
+      void setHeight(int h) {
+         height = h;
+      }
+
+   protected:
+      int width;
+      int height;
+};
+
+class PaintCost {
+   public:
+      int getCost(int area) {
+        return area * 70;
+      }
+};
+
+class Rectangle: public Shape, public PaintCost {
+   public:
+      int getArea() {
+		return (width * height);
+      }
+};
+
+int main(void) {
+   Rectangle Rect;
+   int area;
+   Rect.setWidth(5);
+   Rect.setHeight(7);
+
+   area = Rect.getArea();
+   cout << "Total area: " << Rect.getArea() << endl;
+   cout << "Total paint cost: $" << Rect.getCost(area) << endl;
+   return 0;
+}
+```
+
+Output:
+
+```C++
+Total area: 35
+Total paint cost: $2450
+```
+
 - Multi-Level Inheritance (Kế thừa đa cấp): trong trường hợp này sẽ có một lớp kế thừa được tạo ra từ một lớp kế thừa khác.
 
   ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/multilevel-inheritance.jpg)
+
+```C++
+#include <iostream>
+using namespace std;
+
+class Vehicle{
+   public:
+      void vehicle(){
+         cout<<"I am a vehicle" << endl;
+      }
+};
+
+class FourWheeler : public Vehicle{
+   public:
+      void fourWheeler(){
+         cout<<"I have four wheels" << endl;
+      }
+};
+
+class Car : public FourWheeler{
+   public:
+      void car(){
+         cout<<"I am a car" << endl;
+      }
+};
+int main(){
+   Car obj;
+   obj.car();
+   obj.fourWheeler();
+   obj.vehicle();
+   return 0;
+}
+```
+
+Output:
+
+```C++
+I am a car
+I have four wheels
+I am a vehicle
+```
 
 - Hierarchical Inheritance (Kế thừa phân cấp): đây là trường hợp sẽ có nhiều lớp con được kế thừa từ một lớp cha duy nhất.
 
@@ -240,6 +329,52 @@ Output:
 - Hybrid Inheritance (Kế thừa lai): hay còn được gọi là Kế thừa ảo (Virtual Inheritance). Đây là trường hợp kế thừa được kết hợp bởi nhiều hơn một loại kế thừa, chẳng hạn như kết hợp Đơn kế thừa với Đa kế thừa.
 
   ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/Hybrid.jpg)
+
+```C++
+#include <iostream>
+
+using namespace std;
+
+class Animals {
+  public: Animals() {
+    cout << "This is an animal" << endl;
+  }
+};
+
+class Mammals: public Animals {
+  public: Mammals() {
+    cout << "This is a mammal" << endl;
+  }
+};
+
+class Herbivores {
+  public: Herbivores() {
+    cout << "This is a herbivore" << endl;
+  }
+};
+
+class Cow: public Mammals, public Herbivores {
+
+  public: Cow() {
+    cout << "A cow is a herbivore mammal" << endl;
+  }
+
+};
+
+int main() {
+  Cow c;
+  return 0;
+}
+```
+
+Output:
+
+```C++
+This is an animal
+This is a mammal
+This is a herbivore
+A cow is a herbivore mammal
+```
 
 ### Tính đa hình (Polymorphism)
 
