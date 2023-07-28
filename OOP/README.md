@@ -22,7 +22,7 @@ Là một cơ chế cho phép biểu diễn một tình huống phức tạp tro
 
 Khi một lập trình viên phải phát triển một chương trình ứng dụng thì không có nghĩa là người ấy lập tức viết mã cho ứng dụng ấy. Trước hết, người ấy phải nghiên cứu ứng dụng và xác định những thành phần tạo nên ứng dụng. Kế tiếp, người ấy phải xác định những thông tin cần thiết về mỗi thành phần.
 
-- Người dùng chỉ cần biết có thể thực hiện những gì (what), còn việc thực hiện ra sao thì không cần quan tâm (how).
+Người dùng chỉ cần biết có thể thực hiện những gì (what), còn việc thực hiện ra sao thì không cần quan tâm (how).
 
 Ý nghĩa :
 
@@ -382,6 +382,7 @@ A cow is a herbivore mammal
   tượng khác nhau
 - Với tính đa hình, nếu cùng một phương thức ứng dụng cho các đối tượng thuộc các lớp
   khác nhau thì nó đưa đến những kết quả khác nhau. Bản chất của sự việc chính là phương thức này bao gồm cùng một số lượng các tham số
+- Tính đa hình trong OOP gồm có hai loại: Đa hình thời gian chạy (Runtime Polymorphism) và Đa hình thời gian biên dịch (Compile Time Polymorphism). Theo đó, tính đa hình cho phép một phương thức thực thi những hành vi khác nhau theo hai hướng: sử dụng phương thức ghi đè (method overriding) hoặc phương thức nạp chồng (method overloading).
 
 ### Ưu điểm của lập trình hướng đối tượng
 
