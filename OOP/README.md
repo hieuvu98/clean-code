@@ -140,27 +140,25 @@ int main() {
 
 ```C++
 #include <iostream>
+
 using namespace std;
 class Animal {
-   public:
-		void eat() {
-    		cout<<"Eating..."<<endl;
-		}
+  public: void eat() {
+    cout << "Eating..." << endl;
+  }
 };
 
-class Dog: public Animal
-{
-	public:
-		void bark() {
-			cout<<"Dog Barking...";
-		}
+class Dog: public Animal {
+  public: void bark() {
+    cout << "Dog Barking...";
+  }
 };
 
 int main(void) {
-    Dog dog;
-    dog.eat();
-    dog.bark();
-    return 0;
+  Dog dog;
+  dog.eat();
+  dog.bark();
+  return 0;
 }
 ```
 
