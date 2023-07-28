@@ -64,44 +64,41 @@ Ví dụ: Bài toán quản lý sinh viên chúng ta chỉ cần quản lý các
 - Ví dụ về tính đóng gói:
 
 ```C++
-
 #include <iostream>
 
 using namespace std;
 
 class Student {
-	private:
-		string firstName;
-		string gender;
+  private: string firstName;
+  string gender;
 
-	public:
-	    string getFirstName() {
-	        return this->firstName;
-	    }
+  public: string getFirstName() {
+    return this -> firstName;
+  }
 
-	    void setFirstName(string firstName) {
-	        this->firstName = firstName;
-	        cout << "Set firstname:" << this->firstName << endl;
-	    }
+  void setFirstName(string firstName) {
+    this -> firstName = firstName;
+    cout << "Set firstname:" << this -> firstName << endl;
+  }
 
-	    string getGender() {
-	        return this->gender;
-	    }
+  string getGender() {
+    return this -> gender;
+  }
 
-	    void setGender(string gender) {
-	        if ("Male" != gender && "Female" != gender) {
-	        	cout << "Set gender as Male or Female for gender";
-	        }
+  void setGender(string gender) {
+    if ("Male" != gender && "Female" != gender) {
+      cout << "Set gender as Male or Female for gender";
+    }
 
-	        this->gender = gender;
-	        cout << "Gender is set to " << gender << endl;
-	    }
+    this -> gender = gender;
+    cout << "Gender is set to " << gender << endl;
+  }
 };
 
 int main() {
-	Student student;
-	student.setFirstName("Student 1");
-	student.setGender("Male");
+  Student student;
+  student.setFirstName("Student 1");
+  student.setGender("Male");
 }
 ```
 
