@@ -117,7 +117,36 @@ echo $student->firstname; // ERROR: Fatal error: Uncaught Error: Cannot access p
 ### Tính kế thừa (Inheritance)
 
 - Tính thừa kế cho phép một lớp chia sẻ các thuộc tính và các phương thức được định nghĩa trong một hoặc nhiều lớp khác.
-- Lớp thừa hưởng từ một lớp khác được gọi là subclass (lớp con)
+- Lớp thừa hưởng từ một lớp khác được gọi là subclass (lớp con).
+
+  ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/inheritance-image.png)
+
+#### Ưu điểm của tính kế thừa:
+
+- Tính kế thừa giúp tăng khả năng tái sử dụng. Khi một lớp kế thừa hoặc dẫn xuất một lớp khác, thì nó có thể truy cập tất cả các chức năng của lớp mà nó kế thừa.
+- Khả năng tái sử dụng nâng cao độ tin cậy. Chúng ta chỉ cần kiểm tra và gỡ lỗi với mã lớp cha, chứ không cần kiểm tra từng lớp con.
+- Khi mã được tái sử dụng, sẽ giúp giảm chi phí phát triển và bảo trì.
+- Các lớp con sẽ tuân thủ theo một giao diện (interface) chuẩn.
+- Tính kế thừa giúp hạn chế sự dư thừa mã và hỗ trợ khả năng mở rộng mã.
+- Lập trình viên có điều kiện thuận lợi để tạo các thư viện lớp (class libraries).
+
+#### Nhược điểm của tính kế thừa:
+
+- Các chức năng được kế thừa hoạt động chậm hơn chức năng bình thường, vì nó được thực hiện gián tiếp (lấy từ lớp cha) chứ không phải trực tiếp.
+- Thông thường, các dữ liệu thành viên trong lớp cha không được sử dụng. Điều này có thể dẫn đến lãng phí bộ nhớ.
+- Tính kế thừa làm tăng sự kết nối giữa lớp cơ sở và lớp kế thừa. Một thay đổi trong lớp cha sẽ ảnh hưởng đến tất cả các lớp con.
+- Nếu sử dụng Tính kế thừa không đúng cách có thể dẫn đến các cách giải quyết sai lầm sau này.
+
+#### Các loại kế thừa:
+
+- Single Inheritance (Đơn kế thừa): đây là trường hợp một lớp chỉ được kế thừa từ một lớp duy nhất, tức là một lớp con chỉ có một lớp cha.
+  ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/Single-inheritance.jpg)
+- Multiple Inheritance (Đa kế thừa): đây là trường hợp một lớp có thể kế thừa từ nhiều hơn một lớp khác, đồng nghĩa với việc một lớp con có thể có nhiều hơn một lớp cha.
+  ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/multilevel-inheritance.jpg)
+- Multi-Level Inheritance (Kế thừa đa cấp): trong trường hợp này sẽ có một lớp kế thừa được tạo ra từ một lớp kế thừa khác.
+- Hierarchical Inheritance (Kế thừa phân cấp): đây là trường hợp sẽ có nhiều lớp con được kế thừa từ một lớp cha duy nhất.
+- Hybrid Inheritance (Kế thừa lai): hay còn được gọi là Kế thừa ảo (Virtual Inheritance). Đây là trường hợp kế thừa được kết hợp bởi nhiều hơn một loại kế thừa, chẳng hạn như kết hợp Đơn kế thừa với Đa kế thừa.
+  ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/Hybrid.jpg)
 
 ### Tính đa hình (Polymorphism)
 
