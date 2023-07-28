@@ -140,12 +140,23 @@ echo $student->firstname; // ERROR: Fatal error: Uncaught Error: Cannot access p
 #### Các loại kế thừa:
 
 - Single Inheritance (Đơn kế thừa): đây là trường hợp một lớp chỉ được kế thừa từ một lớp duy nhất, tức là một lớp con chỉ có một lớp cha.
+
   ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/Single-inheritance.jpg)
+
 - Multiple Inheritance (Đa kế thừa): đây là trường hợp một lớp có thể kế thừa từ nhiều hơn một lớp khác, đồng nghĩa với việc một lớp con có thể có nhiều hơn một lớp cha.
-  ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/multilevel-inheritance.jpg)
+
+![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/Multiple-1.jpg)
+
 - Multi-Level Inheritance (Kế thừa đa cấp): trong trường hợp này sẽ có một lớp kế thừa được tạo ra từ một lớp kế thừa khác.
+
+  ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/multilevel-inheritance.jpg)
+
 - Hierarchical Inheritance (Kế thừa phân cấp): đây là trường hợp sẽ có nhiều lớp con được kế thừa từ một lớp cha duy nhất.
+
+  ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/Hierarchicalgfg.jpg)
+
 - Hybrid Inheritance (Kế thừa lai): hay còn được gọi là Kế thừa ảo (Virtual Inheritance). Đây là trường hợp kế thừa được kết hợp bởi nhiều hơn một loại kế thừa, chẳng hạn như kết hợp Đơn kế thừa với Đa kế thừa.
+
   ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/Hybrid.jpg)
 
 ### Tính đa hình (Polymorphism)
