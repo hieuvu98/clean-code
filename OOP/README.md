@@ -67,44 +67,46 @@ Ví dụ: Bài toán quản lý sinh viên chúng ta chỉ cần quản lý các
 
 - Ví dụ về tính đóng gói:
 
-```PHP
+```C++
 
-<?php
+#include <iostream>
+
+using namespace std;
 
 class Student {
-    private $firstname;
-    private $gender;
+	private:
+		string firstName;
+		string gender;
 
-    public function getFirstName() {
-        return $this->firstname;
-    }
+	public:
+	    string getFirstName() {
+	        return this->firstName;
+	    }
 
-    public function setFirstName($firstname) {
-        $this->firstname = $firstname;
-        echo("Set firstname:  ".$firstname);
-        echo("<br>");
-    }
+	    void setFirstName(string firstName) {
+	        this->firstName = firstName;
+	        cout << "Set firstname:" << this->firstName << endl;
+	    }
 
-    public function getGender() {
-        return $this->gender;
-    }
+	    string getGender() {
+	        return this->gender;
+	    }
 
-    public function setGender($gender) {
-        if ('Male' !== $gender and 'Female' !== $gender) {
-            echo('Set gender as Male or Female for gender');
-        }
+	    void setGender(string gender) {
+	        if ("Male" != gender && "Female" != gender) {
+	        	cout << "Set gender as Male or Female for gender";
+	        }
 
-        $this->gender = $gender;
-        echo("Gender is set to ".$gender);
-        echo("<br>");
-    }
+	        this->gender = gender;
+	        cout << "Gender is set to " << gender << endl;
+	    }
+};
+
+int main() {
+	Student student;
+	student.setFirstName("Student 1");
+	student.setGender("Male");
 }
-
-$student = new Student(); // Khởi tạo đối tượng Student
-$student->setFirstName('Student 1'); // Set firstname:  Student 1
-$student->setGender('Male'); // Gender is set to Male
-echo $student->firstname; // ERROR: Fatal error: Uncaught Error: Cannot access private property
-?>
 ```
 
 - Tính đóng gói có một số ưu điểm như sau:
@@ -143,6 +145,39 @@ echo $student->firstname; // ERROR: Fatal error: Uncaught Error: Cannot access p
 
   ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/Single-inheritance.jpg)
 
+```C++
+#include <iostream>
+using namespace std;
+class Animal {
+   public:
+		void eat() {
+    		cout<<"Eating..."<<endl;
+		}
+};
+
+class Dog: public Animal
+{
+	public:
+		void bark() {
+			cout<<"Dog Barking...";
+		}
+};
+
+int main(void) {
+    Dog dog;
+    dog.eat();
+    dog.bark();
+    return 0;
+}
+```
+
+Output:
+
+```c++
+Eating...
+Dog Barking...
+```
+
 - Multiple Inheritance (Đa kế thừa): đây là trường hợp một lớp có thể kế thừa từ nhiều hơn một lớp khác, đồng nghĩa với việc một lớp con có thể có nhiều hơn một lớp cha.
 
 ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/Multiple-1.jpg)
@@ -154,6 +189,53 @@ echo $student->firstname; // ERROR: Fatal error: Uncaught Error: Cannot access p
 - Hierarchical Inheritance (Kế thừa phân cấp): đây là trường hợp sẽ có nhiều lớp con được kế thừa từ một lớp cha duy nhất.
 
   ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/Hierarchicalgfg.jpg)
+
+```C++
+#include <iostream>
+using namespace std;
+
+class Polygon {
+  protected:
+    int width, height;
+  public:
+    void setValues (int a, int b) {
+	  width=a;
+	  height=b;
+	}
+    virtual int area (void) = 0;
+};
+
+class Rectangle: public Polygon {
+  public:
+    int area (void) {
+		return (width * height);
+	}
+};
+
+class Triangle: public Polygon {
+  public:
+    int area (void) {
+		return (width * height / 2);
+	}
+};
+
+int main () {
+  Rectangle rect;
+  Triangle trgl;
+  rect.setValues (4,5);
+  trgl.setValues (4,5);
+  cout << rect.area() << endl;
+  cout << trgl.area() << endl;
+  return 0;
+}
+```
+
+Output:
+
+```C++
+20
+10
+```
 
 - Hybrid Inheritance (Kế thừa lai): hay còn được gọi là Kế thừa ảo (Virtual Inheritance). Đây là trường hợp kế thừa được kết hợp bởi nhiều hơn một loại kế thừa, chẳng hạn như kết hợp Đơn kế thừa với Đa kế thừa.
 
