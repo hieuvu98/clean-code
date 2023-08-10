@@ -24,20 +24,16 @@ Khi một lập trình viên phải phát triển một chương trình ứng d�
 
 Người dùng chỉ cần biết có thể thực hiện những gì (what), còn việc thực hiện ra sao thì không cần quan tâm (how).
 
-Ý nghĩa :
+Ý nghĩa của tính trừu tượng:
 
-- Giao diện người dùng đơn giản, cấp cao.
+- Cung cấp giao diện người dùng đơn giản, cấp cao.
 - Các đoạn mã phức tạp bị ẩn đi.
 - Nâng cao vấn đề bảo mật, bảo vệ dự liệu không bị lộ.
 - Việc bảo trì phần mềm dễ dàng hơn.
 - Việc cập nhật hay thay đổi mã sẽ rất ít khi ảnh hưởng đến Tính trừu tượng.
 
-Ví dụ: Bài toán quản lý sinh viên chúng ta chỉ cần quản lý các thông tin như
+Ví dụ: Bài toán quản lý sinh viên chúng ta chỉ cần quản lý các thông tin như họ tên, ngày sinh, giới tính, điểm thi mà không cần quan tâm đến sở thích, quần áo, thói quen sinh hoạt,...
 
-- Họ tên
-- Ngày sinh
-- Giới tính
-- Điểm thi
 
 #### Các phương pháp trừu tượng hóa
 
@@ -73,16 +69,16 @@ class Student {
   string gender;
 
   public: string getFirstName() {
-    return this -> firstName;
+    return this->firstName;
   }
 
   void setFirstName(string firstName) {
-    this -> firstName = firstName;
-    cout << "Set firstname:" << this -> firstName << endl;
+    this->firstName = firstName;
+    cout << "Set firstname:" << this->firstName << endl;
   }
 
   string getGender() {
-    return this -> gender;
+    return this->gender;
   }
 
   void setGender(string gender) {
@@ -90,7 +86,7 @@ class Student {
       cout << "Set gender as Male or Female for gender";
     }
 
-    this -> gender = gender;
+    this->gender = gender;
     cout << "Gender is set to " << gender << endl;
   }
 };
@@ -411,6 +407,12 @@ int main()
 
 }
 ```
+- Output: 
+```C++
+a = 10
+a =  10.2
+a = 100, b = 200
+```
 
 - Operator Overloading:
 
@@ -424,7 +426,7 @@ class Count {
     public:
         //  Constructor
         Count(int X = 0) {
-            this -> x = X;
+            this->x = X;
         }
     Count operator++() {
         Count c;
@@ -449,6 +451,12 @@ int main() {
     cout << "After using ++ operator: ";
     c2.print();
 }
+```
+
+- Output:
+```C++
+Before using ++ operator: 42
+After using ++ operator: 43
 ```
 
 - Function Overriding
@@ -505,6 +513,12 @@ int main() {
 }
 ```
 
+- Output: 
+```C++
+Area of Rectangle is: 200
+Area of Triangle is: 100
+Area of Polygon is: 0
+```
 ### Nhược điểm của lập trình hướng đối tượng
 
 - Khá phức tạp, đòi hỏi khá nhiều tư duy. Phương pháp này phức tạp vì phần mềm phải dựa trên sự tương tác của đối tượng. Do đó, lập trình viên cần phải hiểu bản chất của những khái niệm cơ bản như: lớp, đối tượng, phương thức, thuộc tính. Đồng thời, ta cũng cần nắm được bốn tính chất cơ bản của lập trình hướng đối tượng. Đó là: Tính trừu tượng (Abstraction), Tính đóng gói (Encapsulation), Tính kế thừa (Inheritance) và Tính đa hình (Polymorphism).
