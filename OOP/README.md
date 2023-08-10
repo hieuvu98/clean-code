@@ -368,7 +368,7 @@ A cow is a herbivore mammal
   tượng khác nhau
 - Với tính đa hình, nếu cùng một phương thức ứng dụng cho các đối tượng thuộc các lớp
   khác nhau thì nó đưa đến những kết quả khác nhau. Bản chất của sự việc chính là phương thức này bao gồm cùng một số lượng các tham số
-- Tính đa hình trong OOP gồm có hai loại: Đa hình thời gian chạy (Runtime Polymorphism) và Đa hình thời gian biên dịch (Compile Time Polymorphism). Theo đó, tính đa hình cho phép một phương thức thực thi những hành vi khác nhau theo hai hướng: sử dụng phương thức ghi đè (method overriding) hoặc phương thức nạp chồng (method overloading).
+- Tính đa hình trong OOP gồm có hai loại: đa hình thời gian chạy (Runtime Polymorphism) và đa hình thời gian biên dịch (Compile Time Polymorphism). Theo đó, tính đa hình cho phép một phương thức thực thi những hành vi khác nhau theo hai hướng: sử dụng phương thức ghi đè (method overriding) hoặc phương thức nạp chồng (method overloading).
 
 ### Ưu điểm của lập trình hướng đối tượng
 
@@ -377,6 +377,133 @@ A cow is a herbivore mammal
 - Giảm thiểu các lỗi và những vấn đề liên quan đến việc bảo trì ứng dụng do khả năng tái sử dụng các đối tượng.
 - Tăng tốc tiến trình thiết kế và phát triển, tiết kiệm được tài nguyên cho các lập trình viên. Giúp tối ưu và tái sử dụng code một cách hiệu quả.
 - Sự xuất hiện của 2 khái niệm mới là lớp và đối tượng chính là đặc trưng của phương pháp lập trình hướng đối tượng. Nó đã giải quyết được các khuyết điểm của phương pháp lập trình hướng cấu trúc để lại. Ngoài ra, các khái niệm này đã giúp biểu diễn tốt hơn thế giới thực trên máy tính.
+
+- Function Overloading:
+```C++
+#include <bits/stdc++.h>
+using namespace std;
+
+class functionOverloadingExample
+{
+	public: void myFunc(int a)
+	{
+		cout << "a = " << a << "\n\n";
+	}
+
+	void myFunc(double a)
+	{
+		cout << "a =  " << a << "\n\n";
+	}
+
+	void myFunc(int a, int b)
+	{
+		cout << "a = " << a << ", b = " << b << "\n\n";
+	}
+};
+
+int main()
+{
+	functionOverloadingExample obj;
+	obj.myFunc(10);
+	obj.myFunc(10.20);
+	obj.myFunc(100, 200);
+	return 0;
+
+}
+```
+
+- Operator Overloading:
+
+```C++
+#include<iostream>
+
+using namespace std;
+
+class Count {
+    int x;
+    public:
+        //  Constructor
+        Count(int X = 0) {
+            this -> x = X;
+        }
+    Count operator++() {
+        Count c;
+
+        c.x = ++x;
+
+        return c;
+    }
+    void print() {
+        cout << x << endl;
+    }
+
+};
+
+int main() {
+    Count c1(42);
+
+    cout << "Before using ++ operator: ";
+    c1.print();
+
+    Count c2 = ++c1;
+    cout << "After using ++ operator: ";
+    c2.print();
+}
+```
+
+- Function Overriding
+
+```C++
+#include <iostream>
+
+using namespace std;
+
+class Polygon {
+    protected: int height, width;
+
+    public:
+	void set_values(int x, int y) {
+        width = x;
+        height = y;
+    }
+
+    virtual int area() {
+        return 0;
+    }
+};
+
+class Rectangle: public Polygon {
+    public:
+	int area() {
+        return width * height;
+    }
+};
+
+class Triangle: public Polygon {
+    public:
+	int area() {
+        return (width * height / 2);
+    }
+};
+
+int main() {
+    Rectangle rect;
+    Triangle trgl;
+    Polygon poly;
+
+    Polygon *ppoly1 = &rect;
+    Polygon *ppoly2 = &trgl;
+    Polygon *ppoly3 = &poly;
+
+    ppoly1->set_values(10, 20);
+    ppoly2->set_values(10, 20);
+    ppoly3->set_values(10, 20);
+
+    cout << "Area of Rectangle is: " << ppoly1->area() << '\n';
+    cout << "Area of Triangle is: " << ppoly2->area() << '\n';
+    cout << "Area of Polygon is: " << ppoly3->area() << '\n';
+}
+```
 
 ### Nhược điểm của lập trình hướng đối tượng
 
