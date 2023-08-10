@@ -1,26 +1,148 @@
 # Những nguyên tắc lập trình
 
-## KISS
-## Separation of Concerns (SoC)
-## Principle of Least Astonishment (POLA)
-## Law of Demeter (LoD)
-## DRY
+## KISS - Keep It Simple Stupid
 
+- Nguyên tắc thiết kế phần mềm này nói rằng các thiết kế, giải pháp, hệ thống và sản phẩm hoạt động tốt nhất nếu chúng được giữ đơn giản. Có nghĩa là chúng ta nên ưu tiên sự đơn giản hơn sự phức tạp và tránh sự phức tạp càng nhiều càng tốt.
+- Ưu điểm:
+  - có thể giải quyết nhiều vấn đề hơn, nhanh hơn.
+  - có thể tạo mã để giải quyết các vấn đề phức tạp với ít dòng mã hơn
+  - có thể tạo mã chất lượng cao hơn
+  - có thể xây dựng các hệ thống lớn hơn, dễ bảo trì hơn
+  - Cơ sở mã của bạn sẽ linh hoạt hơn, dễ dàng mở rộng, sửa đổi hoặc cấu trúc lại khi có yêu cầu mới
+  - Có thể làm việc trong các nhóm phát triển lớn và các dự án lớn vì tất cả mã đều đơn giản
+- Cách để áp dụng KISS:
+  - Chia nhỏ các nhiệm vụ của bạn thành các nhiệm vụ phụ mà bạn nghĩ sẽ mất không quá 4-12 giờ để viết mã
+  - Nếu bạn có nhiều điều kiện trong method của mình, hãy chia chúng thành các method nhỏ hơn.
+  - Hãy chia nhỏ các vấn đề của bạn thành nhiều vấn đề nhỏ. Mỗi vấn đề sẽ có thể được giải quyết trong một hoặc một vài lớp
+  - Giữ các method của bạn nhỏ, mỗi method không bao giờ được nhiều hơn 30-40 dòng. Mỗi method chỉ nên giải quyết một vấn đề nhỏ, không có nhiều trường hợp sử dụng
+  - Giữ cho các lớp (class) của bạn đủ nhỏ
+  - Đừng ngại vứt bỏ code.
+  - Đối với tất cả các tình huống khác, hãy cố gắng giữ cho nó đơn giản nhất có thể, đây là mẫu hành vi khó áp dụng nhất (pattern), nhưng khi bạn đã có nó, bạn sẽ nhìn lại và sẽ nói, Tôi không thể tưởng tượng được mình đã làm việc như thế nào trước.
+
+```C++
+// Good example
+bool isPalindrome(string word) {
+    string reversedWord = string(word.rbegin(), word.rend());
+    return word == reversedWord;
+}
+
+// Bad example
+bool isPalindrome(string word) {
+    bool result = true;
+    for(int i = 0; i < word.size() / 2; i++) {
+        if(word[i] != word[word.size() - 1 - i]) {
+            result = false;
+            break;
+        }
+    }
+    return result;
+}
+```
+
+## Separation of Concerns (SoC)
+
+## Principle of Least Astonishment (POLA)
+
+## Law of Demeter (LoD)
+
+## DRY - Don’t repeat yourself
+- Đừng tự bóp dái chính mình. Mọi logic nên có một biểu diễn duy nhất, rõ ràng trong một hệ thống. Nguyên tắc này thúc đẩy việc tạo mã có thể tái sử dụng và giảm khả năng xảy ra lỗi bằng cách tránh trùng lặp logic.
+
+- Một vài ví dụ:
+```C++
+// Good example
+class Calculator {
+    public:
+    int add(int a, int b) {
+        return a + b;
+    }
+    int subtract(int a, int b) {
+        return a - b;
+    }
+    int multiply(int a, int b) {
+        return a * b;
+    }
+    int divide(int a, int b) {
+        return a / b;
+    }
+};  
+
+// Bad example
+class Calculator {
+    public:
+    int add(int a, int b) {
+        int result = a + b;
+        cout << "Result of add: " << result << endl;
+        return result;
+    }
+    int subtract(int a, int b) {
+        int result = a - b;
+        cout << "Result of subtract: " << result << endl;
+        return result;
+    }
+    int multiply(int a, int b) {
+        int result = a * b;
+        cout << "Result of multiply: " << result << endl;
+        return result;
+    }
+    int divide(int a, int b) {
+        int result = a / b;
+        cout << "Result of divide: " << result << endl;
+        return result;
+    }
+};  
+```
+
+```C++
+// NOT DRY code
+void MakeTea(string type, bool withSugar) {
+    cout << "Boil water. " << endl;
+    if (withSugar) {
+    	cout << "Add sugar. " << endl;
+    }
+    cout << "Brew the" << type << " tea bag." << endl;
+}
+
+void MakeCoffee(bool withSugar) {
+    cout << "Boil water. " << endl;
+    if (withSugar) {
+    	cout << "Add sugar. " << endl;
+    }
+    cout << "Brew the coffee." << endl;
+}
+
+// DRY code
+void BoilWaterAndAddSugar(bool withSugar) {
+    cout << "Boil water. " << endl;
+    if (withSugar) {
+        cout << "Add sugar. " << endl;
+    }
+}
+
+void MakeTea(string type, bool withSugar) {
+    BoilWaterAndAddSugar(withSugar);
+    cout << "Brew the" << type << " tea bag." << endl;
+}
+
+void MakeCoffee(bool withSugar) {
+    BoilWaterAndAddSugar(withSugar);
+}
+```
 ## YAGNI
 
 ## Solid Principles
 
-### S -Single responsibility principle
+### S - Single responsibility principle
 
 - Một class chỉ nên giữ 1 trách nhiệm duy nhất (Chỉ có thể sửa đổi class với 1 lý do duy nhất)
 - Một class có quá nhiều chức năng cũng sẽ trở nên cồng kềnh và phức tạp. Khi yêu cầu thay đổi, một class quá cồng kềnh thì việc thay đổi code rất khó khăn và mất nhiều thời gian. Áp dụng nguyên lý đơn nhiệm chia các chức năng thành nhiều class khác nhau giúp việc quản lý, mở rộng, bảo trì code thuận tiện hơn.
-- Lý do: 
-    - Dễ quản lý mã nguồn
-    - Các lớp tập trung vào nhiệm vụ của mình
-    - Giảm tính phụ thuộc giữa các thành phần
-    - Dễ dàng mở rộng, bảo trì
-    - Có thể phát triển đồng thời các lớp độc lập với nhau
-    
+- Lý do:
+  - Dễ quản lý mã nguồn
+  - Các lớp tập trung vào nhiệm vụ của mình
+  - Giảm tính phụ thuộc giữa các thành phần
+  - Dễ dàng mở rộng, bảo trì
+  - Có thể phát triển đồng thời các lớp độc lập với nhau
+
 ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/osi-model.png)
 
 ### O - Open/closed principle
