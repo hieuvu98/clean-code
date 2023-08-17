@@ -148,8 +148,8 @@ void MakeCoffee(bool withSugar) {
 
 ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/osi-model.png)
 
-
 - Ví dụ 1:
+
 ```C++
 // Bad Code
 class User {
@@ -197,10 +197,11 @@ int main() {
 ```
 
 - Ví dụ 2:
+
 ```C++
 // Bad
 class Invoice {
-  public: 
+  public:
   void AddInvoice() {
     // your logic
   }
@@ -222,7 +223,7 @@ class Invoice {
 
 // Good
 class Invoice {
-  public: 
+  public:
   void AddInvoice() {
     // your logic
   }
@@ -241,7 +242,7 @@ class Invoice {
 }
 
 class Invoice {
-  public: 
+  public:
   void AddInvoice() {
     // your logic
   }
@@ -252,14 +253,14 @@ class Invoice {
 }
 
 class Report {
-  public: 
+  public:
   void GenerateReport() {
     // your logic
   }
 }
 
 class Email {
-  public: 
+  public:
   void EmailReport() {
     // your logic
   }
@@ -270,6 +271,123 @@ class Email {
 
 - Nội dung: Có thể thoải mái mở rộng 1 class, nhưng không được sửa đổi bên trong class đó (open for extension but closed for modification)
 - Theo nguyên lý này, mỗi khi ta muốn thêm chức năng,.. cho chương trình, chúng ta nên viết class mới mở rộng class cũ ( bằng cách kế thừa hoặc sở hữu class cũ) không nên sửa đổi class cũ.
+
+- Ví dụ một hệ thống ngân hàng quản lý các loại tài khoản khác nhau như: tài khoản tiết kiệm, tài khoản thẻ tín dụng và tài khoản tiền gửi cố định.
+
+```C++
+// Bad
+class Account {
+  private:
+    double balance;
+    int type_of_account;
+  public:
+  Account(double balance, int type_of_account): balance(balance),
+  type_of_account(type_of_account) {}
+
+  void deposit(double amount) {
+    balance += amount;
+  }
+
+  void withdraw(double amount) {
+    balance -= amount;
+  }
+
+  double getBalance() const {
+    return balance;
+  }
+
+  double calculateInterest() const {
+    // LOGIC based on type of account
+    if (type_of_account == 1) {
+
+    } else if (type_of_account == 2) {
+
+    }
+  }
+};
+```
+
+- Chúng ta có thể nhận thấy rằng logic tính lãi có thể khác nhau đối với từng loại tài khoản. Có nghĩa là nếu chúng ta cần thêm một loại tài khoản mới trong hệ thống ngân hàng, chúng ta cần sửa đổi chức năng tính lãi cho từng loại tài khoản. Để giải quyết vấn đề này chúng ta sử dụng tính kế thừa và đa hình:
+
+```C++
+class Account {
+  public: virtual void deposit(double balance) = 0;
+  virtual void withdraw(double balance) = 0;
+  virtual double getBalance() = 0;
+  virtual double calculateInterest() = 0;
+};
+
+class SavingsAccount: public Account {
+
+  public: SavingsAccount(double balance): balance(balance) {}
+
+  void deposit(double amount) override {
+    balance += amount;
+  }
+
+  void withdraw(double amount) override {
+    balance -= amount;
+  }
+
+  double getBalance() override {
+    return balance;
+  }
+
+  double calculateInterest() override {
+    return balance * 0.04; // 4% interest rate
+  }
+  private: double balance;
+};
+
+class FixedDepositAccount: public Account {
+
+  public: FixedDepositAccount(double balance, int time): balance(balance) {}
+
+  void deposit(double amount) override {
+    balance += amount;
+  }
+
+  void withdraw(double amount) override {
+    // Logic to withdraw after certain time
+    balance -= amount;
+  }
+
+  double getBalance() override {
+    return balance;
+  }
+
+  double calculateInterest() override {
+    return balance * 0.08; // 8% interest rate
+  }
+  private: double balance;
+  int time;
+};
+
+class CreditCardAccount: public Account {
+  public: CreditCardAccount(double balance, double limit): balance(balance),
+  limit(limit) {}
+  void deposit(double amount) override {
+    balance -= amount;
+  }
+  void withdraw(double amount) override {
+    balance += amount; // credit card withdrawal
+  }
+  double getBalance() override {
+    return balance;
+  }
+  double calculateInterest() override {
+    return balance * 0.18; // 18% interest rate
+  }
+
+  void increaseLimit(double addon) {
+    limit += addon;
+  }
+  private: double balance;
+  double limit;
+};
+```
+[Tài liệu tham khảo](https://www.linkedin.com/pulse/understanding-solid-c-open-closed-principle-abhishek-anand/)
+
 
 ### L - Liskov substitution principle
 
