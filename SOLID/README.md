@@ -46,9 +46,11 @@ bool isPalindrome(string word) {
 ## Law of Demeter (LoD)
 
 ## DRY - Don’t repeat yourself
+
 - Đừng tự bóp dái chính mình. Mọi logic nên có một biểu diễn duy nhất, rõ ràng trong một hệ thống. Nguyên tắc này thúc đẩy việc tạo mã có thể tái sử dụng và giảm khả năng xảy ra lỗi bằng cách tránh trùng lặp logic.
 
 - Một vài ví dụ:
+
 ```C++
 // Good example
 class Calculator {
@@ -65,7 +67,7 @@ class Calculator {
     int divide(int a, int b) {
         return a / b;
     }
-};  
+};
 
 // Bad example
 class Calculator {
@@ -90,7 +92,7 @@ class Calculator {
         cout << "Result of divide: " << result << endl;
         return result;
     }
-};  
+};
 ```
 
 ```C++
@@ -128,6 +130,7 @@ void MakeCoffee(bool withSugar) {
     BoilWaterAndAddSugar(withSugar);
 }
 ```
+
 ## YAGNI
 
 ## Solid Principles
@@ -145,44 +148,128 @@ void MakeCoffee(bool withSugar) {
 
 ![This is an image](https://raw.githubusercontent.com/hieuvu98/clean-code/main/images/osi-model.png)
 
+
+- Ví dụ 1:
+```C++
+// Bad Code
+class User {
+public:
+    void login() {
+        cout << "User logged in" << endl;
+    }
+    void logout() {
+        cout << "User logged out" << endl;
+    }
+    void printUserInfo(string username) {
+        cout << "Username: " << username << endl;
+    }
+}
+
+
+// Good Code
+class Authentication {
+public:
+    void login() {
+        cout << "User logged in" << endl;
+    }
+    void logout() {
+        cout << "User logged out" << endl;
+    }
+};
+
+class UserInfo {
+public:
+    void printUserInfo(string username) {
+        cout << "Username: " << username << endl;
+    }
+};
+
+class User : public Authentication, public UserInfo {
+};
+
+int main() {
+    User user;
+    user.login();
+    user.printUserInfo("User Test");
+    user.logout();
+    return 0;
+}
+```
+
+- Ví dụ 2:
+```C++
+// Bad
+class Invoice {
+  public: 
+  void AddInvoice() {
+    // your logic
+  }
+
+  void DeleteInvoice() {
+    // your logic
+  }
+
+  void GenerateReport() {
+    // your logic
+  }
+
+  void EmailReport() {
+    // your logic
+  }
+}
+
+
+
+// Good
+class Invoice {
+  public: 
+  void AddInvoice() {
+    // your logic
+  }
+
+  void DeleteInvoice() {
+    // your logic
+  }
+
+  void GenerateReport() {
+    // your logic
+  }
+
+  void EmailReport() {
+    // your logic
+  }
+}
+
+class Invoice {
+  public: 
+  void AddInvoice() {
+    // your logic
+  }
+
+  void DeleteInvoice() {
+    // your logic
+  }
+}
+
+class Report {
+  public: 
+  void GenerateReport() {
+    // your logic
+  }
+}
+
+class Email {
+  public: 
+  void EmailReport() {
+    // your logic
+  }
+}
+```
+
 ### O - Open/closed principle
 
 - Nội dung: Có thể thoải mái mở rộng 1 class, nhưng không được sửa đổi bên trong class đó (open for extension but closed for modification)
 - Theo nguyên lý này, mỗi khi ta muốn thêm chức năng,.. cho chương trình, chúng ta nên viết class mới mở rộng class cũ ( bằng cách kế thừa hoặc sở hữu class cũ) không nên sửa đổi class cũ.
-
-```php
-abstract class Connection()
-{
-        public abstract function doConnect();
-}
-
-class SqlServer extends Connection
-{
-    public function doConnect()
-    {
-        //connect with SqlServer
-    }
-}
-
-class MySql extends Connection
-{
-    public function doConnect()
-    {
-        //connect with MySql
-    }
-}
-
-class ConnectionManager
-{
-    public function doConnection(Connection $connection)
-    {
-        //something
-        //.................
-        //connection
-        $connection->doConnect();
-    }
-}
-```
 
 ### L - Liskov substitution principle
 
