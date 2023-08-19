@@ -391,8 +391,29 @@ class CreditCardAccount: public Account {
 
 ### L - Liskov substitution principle
 
-- Trong một chương trình, các object của class con có thể thay thế class cha mà không làm thay đổi tính đúng đắn của chương trình
+- Nguyên lý thay thế Liskov (Liskov substitution principle - LSP) nói rằng trong một chương trình các object của class con có thể thay thế class cha mà không làm thay đổi tính đúng đắn của chương trình.
 
+- Ví dụ 1:
+```C++
+class Bird {
+    public:
+        virtual void fly() = 0;
+};
+
+class Crow : public Bird {
+    public:
+        void fly() override {
+            cout << "Crow is flying" << endl;
+        }
+};
+
+class Penguin : public Bird {
+    public:
+        void fly() override {
+            throw runtime_error("Penguins can't fly");
+        }
+};
+```
 ### I - Interface segregation principle
 
 - Thay vì dùng 1 interface lớn, ta nên tách thành nhiều interface nhỏ, với nhiều mục đích cụ thể
