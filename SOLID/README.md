@@ -383,9 +383,15 @@ class CreditCardAccount: public Account {
 ### L - Liskov substitution principle
 
 - Nguyên lý thay thế Liskov (Liskov substitution principle - LSP) nói rằng trong một chương trình các object của class con có thể thay thế class cha mà không làm thay đổi tính đúng đắn của chương trình.
+- Ưu điểm của việc sử dụng Nguyên tắc thay thế Liskov
+  - Tăng khả năng sử dụng lại mã
+  - Đơn giản hóa việc bảo trì mã: chúng ta có thể thay đổi một lớp mà không ảnh hưởng đến hành vi của các lớp khác trong nhóm.
+  - Thúc đẩy tính module: Khi chúng ta sử dụng LSP để tạo một tập hợp các lớp liên quan, mỗi lớp có thể được coi là một module độc lập, nghĩa là nó có thể được phát triển và kiểm tra độc lập với các lớp khác.
+  - Nâng cao chất lượng mã: Khi tuân theo LSP, chúng ta có thể chắc chắn rằng mọi lớp trong nhóm đều hoạt động nhất quán. Điều này có nghĩa là mỗi lớp sẽ thực hiện cùng một tập hợp các phương thức và có cùng hành vi như lớp cha. Tính nhất quán này có thể giúp giảm khả năng bắt lỗi và hành vi không mong muốn, do đó cải thiện chất lượng tổng thể của mã của chúng tôi.
 
-- Ví dụ thứ nhất vi phạm nguyên tắc LSP:
-  Giả sử chúng ta có lớp cơ sở Bird và các lớp con Crow, Penguin, Duck kế thừa từ Bird. Chim cánh cụt kế thừa class Bird nhưng cánh cụt không biết bay nên khi gọi hàm fly ta sẽ quăng ra exception.
+#### Ví dụ thứ nhất vi phạm nguyên tắc LSP:
+
+Giả sử chúng ta có lớp cơ sở Bird và các lớp con Crow, Penguin, Duck kế thừa từ Bird. Chim cánh cụt kế thừa class Bird nhưng cánh cụt không biết bay nên khi gọi hàm fly ta sẽ quăng ra exception.
 
 ```c++
 class Bird {
@@ -394,7 +400,7 @@ class Bird {
 };
 
 class Crow: public Bird {
-  public: 
+  public:
     void fly() override {
       cout << "Crow is flying" << endl;
     }
@@ -404,7 +410,7 @@ class Crow: public Bird {
 };
 
 class Penguin: public Bird {
-  public: 
+  public:
     void fly() override {
       throw runtime_error("Penguins can't fly");
     }
@@ -414,7 +420,7 @@ class Penguin: public Bird {
 };
 
 class Duck: public Bird {
-  public: 
+  public:
     void fly() override {
       cout << "Duck is flying" << endl;
     }
@@ -424,12 +430,16 @@ class Duck: public Bird {
 };
 
 ```
-- Output: 
+
+- Output:
+
 ```c++
 terminate called after throwing an instance of 'std::runtime_error'
   what():  Penguins can't fly
 ```
+
 - Trong ví dụ trên, đối tượng của Penguin không thể truy cập phương thức fly. Vì vậy vấn đề có thể giải quyết theo cách sau:
+
 ```c++
 class Bird {
 	// logic
@@ -444,7 +454,7 @@ class WalkingBird: public Bird {
 };
 
 class Crow: public FlyingBird, WalkingBird {
-  public: 
+  public:
     void fly() override {
       cout << "Crow is flying" << endl;
     }
@@ -454,14 +464,14 @@ class Crow: public FlyingBird, WalkingBird {
 };
 
 class Penguin: public WalkingBird {
-  public: 
+  public:
     void walk() override {
       cout << "Penguin is walking" << endl;
     }
 };
 
 class Duck: public FlyingBird, WalkingBird {
-  public: 
+  public:
     void fly() override {
       cout << "Duck is flying" << endl;
     }
@@ -470,6 +480,134 @@ class Duck: public FlyingBird, WalkingBird {
     }
 };
 ```
+
+#### Ví dụ thứ 2 vi phạm nguyên tắc LSP: Class con thay đổi hành vi class cha
+
+Ta có hai lớp con Square và Rectangle kế thừa từ lớp cơ sở Shape, lớp SquareRectangle kế thừa từ lớp Rectangle.
+Việc tính toán diện tích class SquareRectangle bằng cách sử dụng width _ width thay vì width _ height. Điều này vi phạm Nguyên tắc thay thế Liskov vì không thể thay thế class SquareRectangle cho class Rectangle trong hàm printArea() mà không gây ra lỗi.
+
+```c++
+class Shape {
+  public:
+    virtual int area() = 0;
+    void printArea(Shape* shape) {
+      cout << "Area: " << shape->area() << endl;
+    }
+};
+
+class Rectangle : public Shape {
+  public:
+    int width = 4;
+    int height = 5;
+    int area() override {
+        return width * height;
+    }
+};
+
+class SquareRectangle : public Rectangle {
+public:
+  int area() override {
+      return width * width;
+  }
+};
+
+class Square : public Shape {
+  public:
+    int side;
+    int area() override {
+        return side * side;
+    }
+};
+
+void printArea(Shape* shape) {
+  cout << "Area: " << shape->area() << endl;
+}
+
+int main() {
+	Rectangle* rectangle = new Rectangle();
+	printArea(rectangle); // prints "Area: 20"
+
+	SquareRectangle* squareRectangle = new SquareRectangle();
+	printArea(squareRectangle); // prints "Area: 16"
+	return 0;
+}
+```
+
+- Trong trường hợp này ta cần tạo một lớp cơ sở mới xác định interface cho Rectangle và các lớp con của nó:
+
+```c++
+class RectangleBase {
+	public:
+	  virtual int getWidth() = 0;
+	  virtual int getHeight() = 0;
+};
+
+class Shape : public RectangleBase {
+	public:
+	  virtual int area() = 0;
+	  int getWidth() override { return 0; }
+	  int getHeight() override { return 0; }
+};
+
+class Rectangle : public Shape {
+	public:
+	  int width;
+	  int height;
+	  int area() override {
+	      return width * height;
+	  }
+	  int getWidth() override { return width; }
+	  int getHeight() override { return height; }
+};
+
+class Square : public Shape {
+	public:
+	  int side;
+	  int area() override {
+	      return side * side;
+	  }
+	  int getWidth() override { return side; }
+	  int getHeight() override { return side; }
+};
+
+class SquareRectangle : public Rectangle {
+	public:
+	  int area() override {
+	      return getWidth() * getWidth();
+	  }
+};
+```
+
+- Lớp Shape kế thừa từ RectangleBase và triển khai các function getWidth() và getHeight(). Các lớp Rectangle và SquareRectangle kế thừa từ Shape và override các hàm getWidth() và getHeight() để trả về kích thước tương ứng của chúng.
+- Lớp SquareRectangle sử dụng hàm getWidth() để tính diện tích của hình.
+- Với cách này ta dã khắc phục lỗi vi phạm nguyên tắc thay thế Liskov bằng cách đảm bảo rằng bất kỳ lớp con nào của Rectangle đều hoạt động giống như Rectangle trong ngữ cảnh của hàm printArea().
+
+Cách giải quyết thứ 2:
+
+```c++
+class Shape {
+	public:
+	  virtual int area() = 0;
+};
+
+class Rectangle : public Shape {
+	public:
+	  int width;
+	  int height;
+	  int area() override {
+	      return width * height;
+	  }
+};
+
+class Square : public Rectangle {
+	public:
+	  int side;
+	  int area() override {
+	      return side * side;
+	  }
+};
+```
+
 ### I - Interface segregation principle
 
 - Thay vì dùng 1 interface lớn, ta nên tách thành nhiều interface nhỏ, với nhiều mục đích cụ thể
