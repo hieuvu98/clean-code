@@ -19,7 +19,7 @@
   - Đừng ngại vứt bỏ code.
   - Đối với tất cả các tình huống khác, hãy cố gắng giữ cho nó đơn giản nhất có thể, đây là mẫu hành vi khó áp dụng nhất (pattern), nhưng khi bạn đã có nó, bạn sẽ nhìn lại và sẽ nói, Tôi không thể tưởng tượng được mình đã làm việc như thế nào trước.
 
-```C++
+```c++
 // Good example
 bool isPalindrome(string word) {
     string reversedWord = string(word.rbegin(), word.rend());
@@ -51,7 +51,7 @@ bool isPalindrome(string word) {
 
 - Một vài ví dụ:
 
-```C++
+```c++
 // Good example
 class Calculator {
     public:
@@ -95,7 +95,7 @@ class Calculator {
 };
 ```
 
-```C++
+```c++
 // NOT DRY code
 void MakeTea(string type, bool withSugar) {
     cout << "Boil water. " << endl;
@@ -150,7 +150,7 @@ void MakeCoffee(bool withSugar) {
 
 - Ví dụ 1:
 
-```C++
+```c++
 // Bad Code
 class User {
 public:
@@ -198,7 +198,7 @@ int main() {
 
 - Ví dụ 2:
 
-```C++
+```c++
 // Bad
 class Invoice {
   public:
@@ -274,7 +274,7 @@ class Email {
 
 - Ví dụ một hệ thống ngân hàng quản lý các loại tài khoản khác nhau như: tài khoản tiết kiệm, tài khoản thẻ tín dụng và tài khoản tiền gửi cố định.
 
-```C++
+```c++
 // Bad
 class Account {
   private:
@@ -309,7 +309,7 @@ class Account {
 
 - Chúng ta có thể nhận thấy rằng logic tính lãi có thể khác nhau đối với từng loại tài khoản. Có nghĩa là nếu chúng ta cần thêm một loại tài khoản mới trong hệ thống ngân hàng, chúng ta cần sửa đổi chức năng tính lãi cho từng loại tài khoản. Để giải quyết vấn đề này chúng ta sử dụng tính kế thừa và đa hình:
 
-```C++
+```c++
 class Account {
   public: virtual void deposit(double balance) = 0;
   virtual void withdraw(double balance) = 0;
@@ -386,32 +386,95 @@ class CreditCardAccount: public Account {
   double limit;
 };
 ```
-[Tài liệu tham khảo](https://www.linkedin.com/pulse/understanding-solid-c-open-closed-principle-abhishek-anand/)
 
+[Tài liệu tham khảo](https://www.linkedin.com/pulse/understanding-solid-c-open-closed-principle-abhishek-anand/)
 
 ### L - Liskov substitution principle
 
 - Nguyên lý thay thế Liskov (Liskov substitution principle - LSP) nói rằng trong một chương trình các object của class con có thể thay thế class cha mà không làm thay đổi tính đúng đắn của chương trình.
 
-- Ví dụ 1:
-```C++
+- Ví dụ thứ nhất vi phạm nguyên tắc LSP:
+  Giả sử chúng ta có lớp cơ sở Bird và các lớp con Crow, Penguin, Duck kế thừa từ Bird. Chim cánh cụt kế thừa class Bird nhưng cánh cụt không biết bay nên khi gọi hàm fly ta sẽ quăng ra exception.
+
+```c++
 class Bird {
-    public:
-        virtual void fly() = 0;
+  public: virtual void fly() = 0;
+  virtual void walk() = 0;
 };
 
-class Crow : public Bird {
-    public:
-        void fly() override {
-            cout << "Crow is flying" << endl;
-        }
+class Crow: public Bird {
+  public: 
+  void fly() override {
+    cout << "Crow is flying" << endl;
+  }
+  void walk() {
+    cout << "Crow is walking" << endl;
+  }
 };
 
-class Penguin : public Bird {
-    public:
-        void fly() override {
-            throw runtime_error("Penguins can't fly");
-        }
+class Penguin: public Bird {
+  public: 
+  void fly() override {
+    throw runtime_error("Penguins can't fly");
+  }
+  void walk() override {
+    cout << "Penguin is walking" << endl;
+  }
+};
+
+class Duck: public Bird {
+  public: 
+  void fly() override {
+    cout << "Duck is flying" << endl;
+  }
+  void walk() {
+    cout << "Duck is walking" << endl;
+  }
+};
+
+```
+- Output: 
+```c++
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Penguins can't fly
+```
+- Trong ví dụ trên, đối tượng của Penguin không thể truy cập phương thức fly. Vì vậy vấn đề có thể giải quyết theo cách sau:
+```c++
+class Bird {
+	// logic
+};
+
+class FlyingBird: public Bird {
+  public: virtual void fly() {}
+};
+
+class WalkingBird: public Bird {
+  public: virtual void walk() {}
+};
+
+class Crow: public FlyingBird, WalkingBird {
+  public: void fly() override {
+    cout << "Crow is flying" << endl;
+  }
+  void walk() override {
+    cout << "Crow is walking" << endl;
+  }
+};
+
+class Penguin: public WalkingBird {
+  public: void walk() override {
+    cout << "Penguin is walking" << endl;
+  }
+};
+
+class Duck: public FlyingBird, WalkingBird {
+  public: 
+  void fly() override {
+    cout << "Duck is flying" << endl;
+  }
+  void walk() override {
+    cout << "Duck is walking" << endl;
+  }
 };
 ```
 ### I - Interface segregation principle
