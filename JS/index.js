@@ -49,7 +49,7 @@ function getDateStringLearningReport(finishedTime) {
   return year + "" + month + "" + day;
 }
 
-let username = 'sushi2013';
+let username = 'btt05test';
 console.log(getDateStringLearningReport(1681998085116));
 console.log(
   hash(username)

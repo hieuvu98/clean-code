@@ -231,14 +231,6 @@ class Invoice {
   void DeleteInvoice() {
     // your logic
   }
-
-  void GenerateReport() {
-    // your logic
-  }
-
-  void EmailReport() {
-    // your logic
-  }
 }
 
 class Invoice {
@@ -269,7 +261,7 @@ class Email {
 
 ### O - Open/closed principle
 
-- Nội dung: Có thể thoải mái mở rộng 1 class, nhưng không được sửa đổi bên trong class đó (open for extension but closed for modification)
+- Có thể thoải mái mở rộng 1 class, nhưng không được sửa đổi bên trong class đó
 - Theo nguyên lý này, mỗi khi ta muốn thêm chức năng,.. cho chương trình, chúng ta nên viết class mới mở rộng class cũ ( bằng cách kế thừa hoặc sở hữu class cũ) không nên sửa đổi class cũ.
 
 - Ví dụ một hệ thống ngân hàng quản lý các loại tài khoản khác nhau như: tài khoản tiết kiệm, tài khoản thẻ tín dụng và tài khoản tiền gửi cố định.
@@ -280,6 +272,7 @@ class Account {
   private:
     double balance;
     int type_of_account;
+
   public:
   Account(double balance, int type_of_account): balance(balance),
   type_of_account(type_of_account) {}
@@ -387,8 +380,6 @@ class CreditCardAccount: public Account {
 };
 ```
 
-[Tài liệu tham khảo](https://www.linkedin.com/pulse/understanding-solid-c-open-closed-principle-abhishek-anand/)
-
 ### L - Liskov substitution principle
 
 - Nguyên lý thay thế Liskov (Liskov substitution principle - LSP) nói rằng trong một chương trình các object của class con có thể thay thế class cha mà không làm thay đổi tính đúng đắn của chương trình.
@@ -404,32 +395,32 @@ class Bird {
 
 class Crow: public Bird {
   public: 
-  void fly() override {
-    cout << "Crow is flying" << endl;
-  }
-  void walk() {
-    cout << "Crow is walking" << endl;
-  }
+    void fly() override {
+      cout << "Crow is flying" << endl;
+    }
+    void walk() {
+      cout << "Crow is walking" << endl;
+    }
 };
 
 class Penguin: public Bird {
   public: 
-  void fly() override {
-    throw runtime_error("Penguins can't fly");
-  }
-  void walk() override {
-    cout << "Penguin is walking" << endl;
-  }
+    void fly() override {
+      throw runtime_error("Penguins can't fly");
+    }
+    void walk() override {
+      cout << "Penguin is walking" << endl;
+    }
 };
 
 class Duck: public Bird {
   public: 
-  void fly() override {
-    cout << "Duck is flying" << endl;
-  }
-  void walk() {
-    cout << "Duck is walking" << endl;
-  }
+    void fly() override {
+      cout << "Duck is flying" << endl;
+    }
+    void walk() {
+      cout << "Duck is walking" << endl;
+    }
 };
 
 ```
@@ -453,28 +444,30 @@ class WalkingBird: public Bird {
 };
 
 class Crow: public FlyingBird, WalkingBird {
-  public: void fly() override {
-    cout << "Crow is flying" << endl;
-  }
-  void walk() override {
-    cout << "Crow is walking" << endl;
-  }
+  public: 
+    void fly() override {
+      cout << "Crow is flying" << endl;
+    }
+    void walk() override {
+      cout << "Crow is walking" << endl;
+    }
 };
 
 class Penguin: public WalkingBird {
-  public: void walk() override {
-    cout << "Penguin is walking" << endl;
-  }
+  public: 
+    void walk() override {
+      cout << "Penguin is walking" << endl;
+    }
 };
 
 class Duck: public FlyingBird, WalkingBird {
   public: 
-  void fly() override {
-    cout << "Duck is flying" << endl;
-  }
-  void walk() override {
-    cout << "Duck is walking" << endl;
-  }
+    void fly() override {
+      cout << "Duck is flying" << endl;
+    }
+    void walk() override {
+      cout << "Duck is walking" << endl;
+    }
 };
 ```
 ### I - Interface segregation principle
