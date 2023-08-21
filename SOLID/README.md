@@ -610,8 +610,138 @@ class Square : public Rectangle {
 
 ### I - Interface segregation principle
 
-- Thay vì dùng 1 interface lớn, ta nên tách thành nhiều interface nhỏ, với nhiều mục đích cụ thể
+- Nguyên tắc chia nhỏ interface phát biểu rằng: thay vì dùng 1 interface lớn, ta nên tách thành nhiều interface nhỏ, với nhiều mục đích cụ thể
 - Nếu thêm các phương thức không cần thiết vào 1 interface các lớp thực hiện giao tiếp (class implement interface) sẽ bị bắt buộc thực thi những phương thức không cần thiết đó. Điều này dẫn đến sự dư thừa trong thực thể.
+
+#### Ví dụ vi phạm nguyên tắc ISP
+##### Ví dụ 1
+Giả sử chúng ta phải thiết kế một hệ thống Printers , trong đó chúng ta phải triển khai các loại máy in khác nhau như LaserPrinter, InkJetPrinter , LEDPrinter , 3DPrinter. Chúng ta có thể có một lớp trừu tượng cho Printer sẽ thực hiện các phương thức như Print, Scan and Fax.
+
+```c++
+class Printer {
+  public:
+    virtual void print() = 0;
+    virtual void scan() = 0;
+    virtual void fax() = 0;
+};
+class InkJetPrinter : public Printer {
+  public:
+    void print() override {
+      cout << "InkJet Printer Printing" << endl;
+      // Implementation of print for InkJet printer
+    }
+
+    void scan() override {
+      cout << "InkJet Printer Scanning" << endl;
+      // Implementation of scan for InkJet printer
+    }
+
+    void fax() override {
+      cout << "InkJet Printer Faxing" << endl;
+      // Implementation of fax for InkJet printer
+    }
+};
+class LaserPrinter : public Printer {
+  public:
+    void print() override {
+      cout << "Laser Printer Printing" << endl;
+      // Implementation of print for laser printer
+    }
+
+    void scan() override {
+      cout << "Laser Printer Scanning" << endl;
+      // Implementation of scan for laser printer
+    }
+
+    void fax() override {
+        throw runtime_error("Laser Printer Can't Fax");
+    }
+};
+```
+
+Trường hợp này xảy ra một vấn đề: lớp LaserPrinter không cần phương thức fax(), nhưng nó buộc phải implement nó vì nó phải tuân theo class Printer. Điều này vi phạm nguyên tắc ISP vì lớp LaserPrinter buộc phải triển khai fax ngay cả khi nó không hỗ trợ chức năng Fax.
+Để khắc phục vi phạm này, chúng ta có thể tạo các interface riêng cho các phương thức print(), scan() và fax():
+
+```c++
+class IPrintable {
+  public:
+    virtual void print() = 0;
+};
+
+class IScannable {
+  public:
+    virtual void scan() = 0;
+};
+
+class IFaxable {
+  public:
+    virtual void fax() = 0;
+};
+
+class InkJetPrinter : public IPrintable, public IScannable, public IFaxable {
+  public:
+    void print() override {
+      cout << "InkJet Printer Printing" << endl;
+      // Implementation of print for InkJet printer
+    }
+
+    void scan() override {
+      cout << "InkJet Printer Scanning" << endl;
+      // Implementation of scan for InkJet printer
+    }
+
+    void fax() override {
+      cout << "InkJet Printer Faxing" << endl;
+      // Implementation of fax for InkJet printer
+    }
+};
+
+class LaserPrinter : public IPrintable, public IScannable {
+  public:
+    void print() override {
+      cout << "Laser Printer Printing" << endl;
+      // Implementation of print for laser printer
+    }
+
+    void scan() override {
+      cout << "Laser Printer Scanning" << endl;
+      // Implementation of scan for laser printer
+    }
+};
+```
+
+##### Ví dụ 2
+Hệ thống phần mềm CAD bao gồm các loại vật rắn khác nhau như Cubes, Sphere, Polygon có các chức năng để hiển thị chúng trên màn hình, tính toán thể tích và cung cấp cách lưu trữ và tìm nạp các vật rắn này.
+
+```c++
+class ISolid {
+  public:
+    virtual void draw() = 0;
+    virtual double calculate() = 0;
+    virtual void serialize() = 0;
+    virtual void deserialize() = 0;
+};
+
+- Chúng ta có thể tạo ba giao diện như IRender, ICalculate, IStore để có chức năng cụ thể hơn:
+
+```c++
+class IRender {
+  public:
+    virtual void draw() = 0;
+};
+
+class ICalculate {
+  public:
+    virtual void calculate() = 0;
+};
+
+class IStore {
+  public:
+    virtual void serialize() = 0;
+    virtual void deserialize() = 0;
+};
+```
+Giờ đây các lớp Cube, Sphere và Polygon chỉ cần triển khai các interface có liên quan đến chúng.
 
 ### D - Dependency inversion principle
 
