@@ -614,7 +614,9 @@ class Square : public Rectangle {
 - Nếu thêm các phương thức không cần thiết vào 1 interface các lớp thực hiện giao tiếp (class implement interface) sẽ bị bắt buộc thực thi những phương thức không cần thiết đó. Điều này dẫn đến sự dư thừa trong thực thể.
 
 #### Ví dụ vi phạm nguyên tắc ISP
+
 ##### Ví dụ 1
+
 Giả sử chúng ta phải thiết kế một hệ thống Printers , trong đó chúng ta phải triển khai các loại máy in khác nhau như LaserPrinter, InkJetPrinter , LEDPrinter , 3DPrinter. Chúng ta có thể có một lớp trừu tượng cho Printer sẽ thực hiện các phương thức như Print, Scan and Fax.
 
 ```c++
@@ -711,9 +713,10 @@ class LaserPrinter : public IPrintable, public IScannable {
 ```
 
 ##### Ví dụ 2
+
 Hệ thống phần mềm CAD bao gồm các loại vật rắn khác nhau như Cubes, Sphere, Polygon có các chức năng để hiển thị chúng trên màn hình, tính toán thể tích và cung cấp cách lưu trữ và tìm nạp các vật rắn này.
 
-```c++
+````c++
 class ISolid {
   public:
     virtual void draw() = 0;
@@ -740,10 +743,28 @@ class IStore {
     virtual void serialize() = 0;
     virtual void deserialize() = 0;
 };
-```
+````
+
 Giờ đây các lớp Cube, Sphere và Polygon chỉ cần triển khai các interface có liên quan đến chúng.
 
 ### D - Dependency inversion principle
 
-- Các module cấp cao không nên phụ thuộc vào các modules cấp thấp. Cả 2 nên phụ thuộc vào lớp trừu tượng abstraction
-- Interface (abstraction) không nên phụ thuộc vào chi tiết, mà ngược lại. ( Các class giao tiếp với nhau thông qua interface, không phải thông qua implementation.)
+- Dependency Inversion Principle (DIP): là một nguyên lý để thiết kế và viết code. Nguyên lý phát biểu rằng:
+  - Các module cấp cao không nên phụ thuộc vào các modules cấp thấp. Cả 2 nên phụ thuộc vào lớp trừu tượng abstraction
+  - Interface (abstraction) không nên phụ thuộc vào chi tiết, mà ngược lại. ( Các class giao tiếp với nhau thông qua interface, không phải thông qua implementation.)
+- Inversion of Control (IoC): là một design pattern được tạo ra để code có thể tuân thủ nguyên lý Dependency Inversion. Có nhiều cách hiện thực Pattern này như ServiceLocator, Event, Delegate, … và Dependency Injection là một trong các cách đó.
+- Dependency Injection (DI): là một Design Pattern, một cách để hiện thực Inversion of Control Pattern. DI chính là khả năng liên kết giữa các thành phần lại với nhau, các module phụ thuộc (dependency) sẽ được inject vào module cấp cao.
+- Nhiệm vụ của dependency injection:
+  - Tạo các đối tượng.
+  - Quản lý sự phụ thuộc (dependencies) giữa các đối tượng.
+  - Cung cấp (inject) các phụ thuộc được yêu cầu cho đối tượng (được truyền từ bên ngoài đối tượng).
+  - Các module không giao tiếp trực tiếp với nhau, mà thông qua interface. Module cấp thấp sẽ implement interface, module cấp cao sẽ gọi module cấp thấp thông qua interface.
+  - Việc khởi tạo các module cấp thấp sẽ do DI Container/ IoC Container thực hiện.
+
+#### Các dạng Dependency Injection
+
+- Constructor Injection: Các dependency sẽ được container truyền vào (inject vào) 1 class thông qua constructor của class đó. Đây là cách thông dụng nhất.
+- Setter Injection: Các dependency sẽ được truyền vào 1 class thông qua các hàm Setter.
+- Fields/ properties: Các dependency sẽ được truyền vào 1 class một cách trực tiếp vào các field.
+- Interface Injection: Class cần inject sẽ implement 1 interface. Interface này chứa 1 hàm tên Inject. Container sẽ injection dependency vào 1 class thông qua việc gọi hàm Inject của interface đó. Đây là cách rườm rà và cũng ít được sử dụng.
+- Service Locator: nó hoạt động như một mapper, cho phép thay đổi code tại thời điểm run-time mà không cần biên dịch lại ứng dụng hoặc phải khởi động lại.
