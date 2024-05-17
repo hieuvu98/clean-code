@@ -233,17 +233,6 @@ class Invoice {
   }
 }
 
-class Invoice {
-  public:
-  void AddInvoice() {
-    // your logic
-  }
-
-  void DeleteInvoice() {
-    // your logic
-  }
-}
-
 class Report {
   public:
   void GenerateReport() {
