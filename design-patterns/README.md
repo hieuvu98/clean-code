@@ -54,6 +54,21 @@ function clientCode() {
 
 clientCode();
 ```
+
+##### So sánh
+Singleton Pattern có thể được so sánh với một số Design Pattern tương tự, chẳng hạn như:
+
+- Factory Pattern: Factory Pattern cung cấp một cách để tạo các đối tượng của lớp một cách linh hoạt. Tuy nhiên, Factory Pattern không đảm bảo rằng chỉ có một đối tượng của lớp được tạo ra.
+- Prototype Pattern: Prototype Pattern cung cấp một cách để tạo các bản sao của đối tượng. Prototype Pattern cũng có thể được sử dụng để tạo một đối tượng duy nhất của lớp. Tuy nhiên, Prototype Pattern có thể phức tạp hơn Singleton Pattern.
+
+##### Lưu ý
+Khi áp dụng Singleton Pattern, cần lưu ý một số điểm sau:
+
+- Singleton Pattern có thể làm giảm tính linh hoạt của ứng dụng. Ví dụ, nếu bạn cần tạo ra nhiều instance của một class, bạn sẽ cần phải thay đổi code để xóa phương thức getInstance().
+- Singleton Pattern có thể gây ra vấn đề khi test. Ví dụ, nếu bạn đang test một class sử dụng Singleton Pattern, bạn sẽ cần tạo ra một instance giả của class đó.
+
+##### Ưu và nhược điểm
+
 #### Factory Method
 
 #### Abstract Factory
