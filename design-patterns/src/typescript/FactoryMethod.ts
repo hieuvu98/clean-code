@@ -47,7 +47,7 @@ function clientCode(creator: Logistics) {
   console.log(creator.planDelivery());
   // ...
 }
-
+console.log("\n============== Example 1 ==============");
 console.log("App: Launched with the RoadLogistics.");
 clientCode(new RoadLogistics());
 console.log("");
@@ -56,7 +56,6 @@ console.log("App: Launched with the SeaLogistics.");
 clientCode(new SeaLogistics());
 
 // Example 2
-
 // Định nghĩa lớp hình học cơ bản
 interface Shape {
   draw(): string;
@@ -74,3 +73,31 @@ class Rectangle implements Shape {
     return "Drawing a Rectangle";
   }
 }
+
+abstract class ShapeFactory {
+  public abstract createShape(): Shape;
+
+  public drawShape(): string {
+    const product = this.createShape();
+    return `${product.draw()}`;
+  }
+}
+
+class RectangleFactory extends ShapeFactory {
+  public createShape(): Shape {
+    return new Rectangle();
+  }
+}
+
+class CircleFactory extends ShapeFactory {
+  public createShape(): Shape {
+    return new Circle();
+  }
+}
+
+console.log("\n============== Example 2 ==============");
+const circleFactory: ShapeFactory = new CircleFactory();
+console.log(circleFactory.drawShape());
+
+const rectangleFactory: RectangleFactory = new RectangleFactory();
+console.log(rectangleFactory.drawShape());
