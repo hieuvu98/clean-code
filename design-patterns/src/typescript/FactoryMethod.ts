@@ -1,9 +1,9 @@
 // Example 1
-// Định nghĩa giao diện Product
+// Định nghĩa interface product
 interface Transport {
   deliver(): string;
 }
-// Các lớp cụ thể triển khai giao diện Product
+// Các lớp cụ thể triển khai interface product
 class Truck implements Transport {
   public deliver(): string {
     return "{Result of the Truck}";
@@ -16,7 +16,7 @@ class Ship implements Transport {
   }
 }
 
-// Định nghĩa lớp Logistics và phương thức factoryMethod
+// Định nghĩa lớp Logistics (Creator) và phương thức factoryMethod
 abstract class Logistics {
   public abstract createTransport(): Transport;
 
@@ -26,7 +26,7 @@ abstract class Logistics {
   }
 }
 
-// Các lớp ConcreteCreator triển khai factoryMethod để tạo Product tương ứng
+// Các lớp ConcreteCreator triển khai factoryMethod để tạo product tương ứng
 class RoadLogistics extends Logistics {
   public createTransport(): Transport {
     return new Truck();

@@ -49,11 +49,11 @@ function getDateStringLearningReport(finishedTime) {
   return year + "" + month + "" + day;
 }
 
-let username = '120000224';
+let username = '975100135';
 console.log(
   hash(username)
 );
 
 console.log(
-  buildRedisUserKey("k12:product:user:authenInfo", username)
+  buildRedisUserKey("k12:product:user:profile:info", username)
 );

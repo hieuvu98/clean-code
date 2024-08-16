@@ -2,7 +2,7 @@
 
 ## Giới thiệu
 
-Factory method là design pattern khởi tạo cung cấp interface để khởi tạo các đối tượng (object) ở superclass, nhưng cho phép class con (subclasses) thay đổi kiểu của object sẽ được tạo ra. Factory Method Pattern dựa trên việc sử dụng một phương thức trừu tượng (thường được gọi là "factory method") trong một lớp trừu tượng (thường được gọi là "Creator"). Các lớp con của Creator sẽ triển khai factory method này để tạo ra các đối tượng cụ thể của lớp. Điều này cho phép linh hoạt trong việc tạo đối tượng mà không cần biết chính xác kiểu cụ thể của đối tượng.
+Factory method là design pattern khởi tạo, cung cấp interface để khởi tạo các đối tượng (object) ở superclass, nhưng cho phép class con (subclasses) thay đổi kiểu của object sẽ được tạo ra. Factory Method Pattern dựa trên việc sử dụng một phương thức trừu tượng (thường được gọi là "factory method") trong một lớp trừu tượng (thường được gọi là "Creator"). Các lớp con của Creator sẽ triển khai factory method này để tạo ra các đối tượng cụ thể của lớp. Điều này cho phép linh hoạt trong việc tạo đối tượng mà không cần biết chính xác kiểu cụ thể của đối tượng.
 
 Được sử dụng với mục đích:
 
@@ -48,6 +48,11 @@ Một Factory Pattern bao gồm các thành phần cơ bản sau:
 - Sub Classes: các sub class sẽ implement các phương thức của supper class theo nghiệp vụ riêng của nó.
 - Factory Class: một class chịu tránh nhiệm khởi tạo các đối tượng sub class dựa theo tham số đầu vào. Lưu ý: lớp này là Singleton hoặc cung cấp một public static method cho việc truy xuất và khởi tạo đối tượng. Factory class sử dụng if-else hoặc switch-case để xác định class con đầu ra.
 
+
+Để triển khai Factory Method Pattern, ta cần:
+- Xác định Interface/ Lớp trừu tượng cho sản phẩm:
+- Xác định lớp Creator trừu tượng với phương thức factory method:
+- Sử dụng Creator và ConcreteCreator để lấy ra sản phẩm:
 ## Ưu và nhược điểm
 
 ### Ưu điểm
